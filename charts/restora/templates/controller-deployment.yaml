@@ -1,0 +1,62 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: restora-controller
+  namespace: {{ .Release.Namespace }}
+  labels:
+    {{- include "restora.labels" . | nindent 4 }}
+    app.kubernetes.io/component: controller
+spec:
+  replicas: 1
+  # The data volume can be mounted by one pod only.
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      {{- include "restora.selectorLabels" (dict "root" . "component" "controller") | nindent 6 }}
+  template:
+    metadata:
+      labels:
+        {{- include "restora.selectorLabels" (dict "root" . "component" "controller") | nindent 8 }}
+    spec:
+      serviceAccountName: restora-controller
+      # The controller reads and writes the cluster (see controller-rbac.yaml).
+      automountServiceAccountToken: true
+      securityContext:
+        fsGroup: 65532
+      containers:
+        - name: controller
+          image: {{ include "restora.image" (dict "root" . "name" .Values.controller.imageName) }}
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          env:
+            - name: RESTORA_NAMESPACE
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.namespace
+            # Test pods of NFS locations run this image, so the controller tells them which one it is.
+            - name: RESTORA_IMAGE
+              value: {{ include "restora.image" (dict "root" . "name" .Values.controller.imageName) | quote }}
+            - name: RESTORA_IMAGE_PULL_POLICY
+              value: {{ .Values.image.pullPolicy | quote }}
+          volumeMounts:
+            - name: data
+              mountPath: /data
+          ports:
+            - name: health
+              containerPort: 8081
+          livenessProbe:
+            httpGet:
+              path: /healthz
+              port: health
+          readinessProbe:
+            httpGet:
+              path: /readyz
+              port: health
+          resources:
+            {{- toYaml .Values.controller.resources | nindent 12 }}
+          securityContext:
+            {{- include "restora.containerSecurityContext" . | nindent 12 }}
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: restora-controller-data

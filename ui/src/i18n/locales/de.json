@@ -1,0 +1,1027 @@
+{
+  "nav": {
+    "overview": "Übersicht",
+    "applications": "Anwendungen",
+    "applicationsShort": "Apps",
+    "activity": "Aktivität",
+    "policies": "Richtlinien",
+    "locations": "Speicherorte",
+    "settings": "Einstellungen",
+    "more": "Mehr",
+    "main": "Hauptnavigation",
+    "closeMenu": "Menü schließen"
+  },
+  "common": {
+    "loading": "Lädt …",
+    "retry": "Erneut versuchen",
+    "language": "Sprache",
+    "technicalDetails": "Technische Details",
+    "loadMore": "Mehr laden",
+    "phase": {
+      "Pending": "Wartet",
+      "Running": "Läuft",
+      "Succeeded": "Fertig",
+      "Failed": "Fehlgeschlagen"
+    },
+    "duration": "Dauer {{duration}}",
+    "close": "Schließen"
+  },
+  "theme": {
+    "light": "Hell",
+    "dark": "Dunkel",
+    "system": "System",
+    "switchToDark": "Dunkle Darstellung einschalten",
+    "switchToLight": "Helle Darstellung einschalten"
+  },
+  "overview": {
+    "title": "Übersicht",
+    "subtitle": "Der Zustand deiner Datensicherung auf einen Blick.",
+    "system": {
+      "title": "System",
+      "running": "Restora läuft",
+      "unreachable": "Nicht erreichbar",
+      "version": "Version",
+      "startedAt": "Gestartet am",
+      "errorTitle": "Verbindung fehlgeschlagen",
+      "errorText": "Die Oberfläche kann den Restora-Dienst nicht erreichen.",
+      "errorHint": "Prüfe, ob der Dienst restora-api läuft, und versuche es dann erneut."
+    },
+    "protection": {
+      "title": "Schutz",
+      "emptyTitle": "Noch nichts zu sehen",
+      "emptyText": "Sobald Restora Anwendungen in deinem Cluster erkennt, siehst du hier, welche geschützt sind."
+    }
+  },
+  "placeholder": {
+    "title": "Kommt bald",
+    "text": "Diese Funktion wird in einer späteren Version freigeschaltet.",
+    "back": "Zur Übersicht"
+  },
+  "notFound": {
+    "title": "Seite nicht gefunden",
+    "text": "Diese Adresse gibt es nicht. Vielleicht wurde die Seite verschoben.",
+    "back": "Zur Übersicht"
+  },
+  "settings": {
+    "title": "Einstellungen",
+    "subtitle": "Sprache und Darstellung anpassen.",
+    "general": "Allgemein",
+    "language": {
+      "title": "Sprache",
+      "description": "Gilt für die ganze Oberfläche. Arabisch wird von rechts nach links angezeigt."
+    },
+    "theme": {
+      "title": "Darstellung",
+      "description": "„System“ folgt der Einstellung deines Geräts."
+    }
+  },
+  "applications": {
+    "title": "Anwendungen",
+    "subtitle": "Alles, was Restora in deinem Cluster gefunden hat. Eine Anwendung entspricht einem Namespace.",
+    "search": {
+      "label": "Anwendungen durchsuchen",
+      "placeholder": "Name oder Datenbank suchen",
+      "clear": "Suche leeren"
+    },
+    "filter": {
+      "label": "Nach Volumes filtern",
+      "all": "Alle",
+      "with": "Mit Volumes",
+      "without": "Ohne Volumes"
+    },
+    "columns": {
+      "name": "Name",
+      "status": "Status",
+      "engines": "Datenbank",
+      "workloads": "Workloads",
+      "volumes": "Volumes"
+    },
+    "count": "Gefunden: {{total}}",
+    "health": {
+      "running": "Läuft",
+      "degraded": "Eingeschränkt",
+      "stopped": "Gestoppt"
+    },
+    "empty": {
+      "title": "Noch keine Anwendungen",
+      "text": "Sobald in einem Namespace deines Clusters Pods oder Volumes laufen, erscheint er hier. Systembereiche wie kube-system blendet Restora aus.",
+      "refresh": "Jetzt aktualisieren"
+    },
+    "noResults": {
+      "title": "Nichts passt zu deiner Suche",
+      "text": "Prüfe die Schreibweise oder entferne den Filter.",
+      "reset": "Suche zurücksetzen"
+    },
+    "error": {
+      "title": "Anwendungen konnten nicht geladen werden",
+      "text": "Restora kann den Cluster gerade nicht lesen.",
+      "hint": "Prüfe, ob der Dienst restora-api läuft und Leserechte im Cluster hat, und versuche es dann erneut."
+    },
+    "detail": {
+      "back": "Alle Anwendungen",
+      "notFound": {
+        "title": "Anwendung nicht gefunden",
+        "text": "Sie wurde möglicherweise gelöscht. Gehe zurück zur Liste und lade sie neu."
+      },
+      "error": {
+        "title": "Anwendung konnte nicht geladen werden"
+      },
+      "overview": {
+        "title": "Überblick",
+        "storage": "Speicher gesamt",
+        "createdAt": "Angelegt am"
+      },
+      "workloads": {
+        "title": "Workloads",
+        "empty": "Diese Anwendung hat keine Deployments oder StatefulSets.",
+        "name": "Name",
+        "kind": "Typ",
+        "ready": "Bereit",
+        "images": "Images",
+        "readyOf": "{{ready}} von {{desired}}"
+      },
+      "volumes": {
+        "title": "Volumes",
+        "empty": "Diese Anwendung hat keine Volumes. Es gibt hier keine Daten zu sichern.",
+        "name": "Name",
+        "size": "Größe",
+        "storageClass": "Speicherklasse",
+        "status": "Status",
+        "phase": {
+          "Bound": "Gebunden",
+          "Pending": "Wartet",
+          "Lost": "Verloren"
+        }
+      },
+      "configMaps": {
+        "title": "Konfiguration (ConfigMaps)",
+        "empty": "Keine ConfigMaps."
+      },
+      "secrets": {
+        "title": "Geheimnisse (Secrets)",
+        "empty": "Keine Secrets.",
+        "note": "Restora zeigt nur die Namen. Die Inhalte liest Restora nie."
+      }
+    },
+    "deleted": {
+      "title": "Gelöscht, aber noch im Speicherort",
+      "text": "Diese Anwendungen gibt es im Cluster nicht mehr, ihre Sicherungen liegen aber noch in einem Speicherort.",
+      "open": "Öffnen",
+      "summary": "{{n}} Sicherungen, die letzte vom {{time}}"
+    }
+  },
+  "activity": {
+    "title": "Aktivität",
+    "subtitle": "Alle Sicherungen und Wiederherstellungen deines Clusters, die neuesten zuerst.",
+    "search": {
+      "label": "Aktivität durchsuchen",
+      "placeholder": "Nach Anwendung suchen",
+      "clear": "Suche leeren"
+    },
+    "typeFilter": {
+      "label": "Nach Art filtern",
+      "all": "Alle",
+      "backup": "Sicherungen",
+      "restore": "Wiederherstellungen"
+    },
+    "status": {
+      "label": "Nach Status filtern",
+      "all": "Alle",
+      "active": "Läuft",
+      "succeeded": "Fertig",
+      "failed": "Fehler",
+      "withCount": "{{label}} ({{n}})"
+    },
+    "count": "Gefunden: {{total}}",
+    "list": {
+      "title": "Verlauf"
+    },
+    "runningFor": "Läuft seit {{duration}}",
+    "type": {
+      "backup": "Sicherung",
+      "restore": "Wiederherstellung"
+    },
+    "empty": {
+      "title": "Noch nichts passiert",
+      "text": "Sobald du eine Anwendung sicherst oder wiederherstellst, erscheint es hier mit Status, Dauer und Schritten.",
+      "action": "Zu den Anwendungen"
+    },
+    "noResults": {
+      "title": "Nichts passt zu deiner Auswahl",
+      "text": "Prüfe die Schreibweise oder entferne einen Filter.",
+      "reset": "Filter zurücksetzen"
+    },
+    "error": {
+      "title": "Aktivität konnte nicht geladen werden",
+      "text": "Restora kann die Liste gerade nicht lesen.",
+      "hint": "Prüfe, ob restora-api läuft und im Cluster lesen darf, und versuche es dann noch einmal."
+    },
+    "byPolicy": "Richtlinie: {{name}}"
+  },
+  "policies": {
+    "title": "Richtlinien",
+    "subtitle": "Sichere Anwendungen automatisch nach Zeitplan.",
+    "create": "Richtlinie anlegen",
+    "back": "Zurück zu den Richtlinien",
+    "actionFailed": "Die Aktion konnte nicht ausgeführt werden.",
+    "state": {
+      "active": "Aktiv",
+      "paused": "Pausiert",
+      "error": "Fehler"
+    },
+    "card": {
+      "schedule": "Zeitplan",
+      "applications": "Anwendungen",
+      "next": "Nächster Lauf",
+      "last": "Letzter Lauf",
+      "pausedNext": "Pausiert, kein Lauf geplant",
+      "never": "Noch nicht gelaufen",
+      "lastResult": "{{started}} gestartet, {{skipped}} übersprungen",
+      "missing": "Diese Anwendungen gibt es nicht (mehr): {{names}}.",
+      "noMatch": "Zurzeit passt keine Anwendung. Die Richtlinie sichert, sobald eine passt.",
+      "skipped": "Übersprungen ({{n}})",
+      "pause": "Pausieren",
+      "resume": "Fortsetzen",
+      "edit": "Bearbeiten",
+      "delete": "Löschen",
+      "retention": "Aufbewahrung",
+      "cleanup": "Zuletzt aufgeräumt {{time}}: {{n}} gelöscht",
+      "export": "Export",
+      "exportNone": "Nur im Cluster",
+      "run": "Jetzt ausführen"
+    },
+    "schedule": {
+      "hourly": "Stündlich, zur Minute {{minute}}",
+      "daily": "Täglich um {{time}}",
+      "weekly": "Jeden {{weekday}} um {{time}}",
+      "custom": "Eigener Zeitplan: {{cron}}",
+      "inZone": "{{schedule}} ({{timezone}})"
+    },
+    "selector": {
+      "all": "Alle Anwendungen ({{n}})",
+      "labels": "Label {{labels}} ({{n}} Treffer)"
+    },
+    "skipped": {
+      "snapshot_in_progress": "Es lief schon eine Sicherung.",
+      "restore_in_progress": "Es lief gerade eine Wiederherstellung.",
+      "application_missing": "Die Anwendung gibt es nicht.",
+      "request_failed": "Die Sicherung konnte nicht gestartet werden."
+    },
+    "errors": {
+      "invalid_schedule": {
+        "text": "Der Zeitplan dieser Richtlinie ist ungültig, sie läuft deshalb nicht.",
+        "hint": "Bearbeite die Richtlinie und korrigiere den Zeitplan."
+      },
+      "invalid_selector": {
+        "text": "Die Auswahl der Anwendungen ist ungültig, die Richtlinie läuft deshalb nicht.",
+        "hint": "Bearbeite die Richtlinie und korrigiere die Auswahl."
+      },
+      "unknown": {
+        "text": "Diese Richtlinie kann nicht laufen.",
+        "hint": "Die technischen Details helfen bei der Suche nach der Ursache."
+      },
+      "invalid_retention": {
+        "text": "Die Aufbewahrung dieser Richtlinie ist ungültig, sie läuft deshalb nicht.",
+        "hint": "Bearbeite die Richtlinie und korrigiere die Aufbewahrung."
+      }
+    },
+    "empty": {
+      "title": "Noch keine Richtlinie",
+      "text": "Eine Richtlinie sichert deine Anwendungen automatisch, zum Beispiel jede Nacht. Lege die erste an, dann musst du nicht mehr selbst daran denken."
+    },
+    "error": {
+      "title": "Richtlinien konnten nicht geladen werden",
+      "text": "Restora kann die Liste gerade nicht lesen.",
+      "hint": "Prüfe, ob restora-api läuft und im Cluster lesen darf, und versuche es dann noch einmal."
+    },
+    "notFound": {
+      "title": "Diese Richtlinie gibt es nicht",
+      "text": "Sie wurde vielleicht gelöscht. Geh zurück zur Liste."
+    },
+    "delete": {
+      "title": "Richtlinie löschen?",
+      "intro": "Die Richtlinie {{name}} wird gelöscht.",
+      "stops": "Es werden keine automatischen Sicherungen mehr nach dieser Richtlinie gemacht.",
+      "keeps": "Sicherungen, die sie schon erstellt hat, bleiben erhalten.",
+      "cancel": "Abbrechen",
+      "confirm": "Jetzt löschen",
+      "failed": "Die Richtlinie konnte nicht gelöscht werden."
+    },
+    "form": {
+      "titleNew": "Richtlinie anlegen",
+      "titleEdit": "Richtlinie bearbeiten",
+      "subtitle": "Wähle, was gesichert wird und wann. Unten siehst du sofort, wie die nächsten Läufe aussehen.",
+      "general": "Name",
+      "what": "Was wird gesichert?",
+      "when": "Wann läuft sie?",
+      "cancel": "Abbrechen",
+      "create": "Richtlinie anlegen",
+      "save": "Änderungen speichern",
+      "saving": "Wird gespeichert …",
+      "name": {
+        "label": "Name der Richtlinie",
+        "placeholder": "Nächtliche Sicherung"
+      },
+      "selector": {
+        "label": "Auswahl der Anwendungen",
+        "applications": "Bestimmte",
+        "labels": "Nach Label",
+        "all": "Alle",
+        "allHint": "Alle Anwendungen deines Clusters werden gesichert, auch solche, die später dazukommen."
+      },
+      "applications": {
+        "label": "Anwendungen",
+        "error": "Die Anwendungen konnten nicht geladen werden.",
+        "none": "Im Cluster gibt es noch keine Anwendung."
+      },
+      "labels": {
+        "label": "Label des Namespace",
+        "hint": "Format: schlüssel=wert. Mehrere trennst du mit Komma, dann müssen alle passen."
+      },
+      "schedule": {
+        "label": "Art des Zeitplans",
+        "hourly": "Stündlich",
+        "daily": "Täglich",
+        "weekly": "Wöchentlich",
+        "custom": "Eigene Angabe"
+      },
+      "minute": {
+        "label": "Minute der Stunde",
+        "hint": "Zum Beispiel 30: Sicherung um 10:30, 11:30, 12:30 …"
+      },
+      "weekday": {
+        "label": "Wochentag"
+      },
+      "time": {
+        "label": "Uhrzeit"
+      },
+      "cron": {
+        "label": "Cron-Angabe",
+        "hint": "Fünf Felder: Minute Stunde Tag Monat Wochentag. Zum Beispiel * * * * * für jede Minute oder */15 * * * * alle 15 Minuten."
+      },
+      "timezone": {
+        "label": "Zeitzone",
+        "hint": "Die Uhrzeit gilt in dieser Zeitzone."
+      },
+      "problems": {
+        "summary": "Bitte prüfe die markierten Felder.",
+        "name": "Gib der Richtlinie einen Namen.",
+        "applications": "Wähle mindestens eine Anwendung.",
+        "labels": "Gib das Label so an: schlüssel=wert.",
+        "minute": "Gib eine Zahl von 0 bis 59 an.",
+        "cron": "Eine Cron-Angabe hat fünf Felder, durch Leerzeichen getrennt.",
+        "retention": "Gib mindestens eine Zahl größer als 0 an (ganze Zahlen bis 1000).",
+        "export": "Wähle mindestens einen Speicherort, damit die Sicherungen den Cluster verlassen."
+      },
+      "saveErrors": {
+        "policy_name_taken": "Eine andere Richtlinie hat schon diesen Namen.",
+        "invalid_name": "Der Name ist ungültig.",
+        "invalid_schedule": "Der Zeitplan ist ungültig.",
+        "invalid_selector": "Die Auswahl der Anwendungen ist ungültig.",
+        "cluster_unreachable": "Restora konnte die Richtlinie nicht speichern.",
+        "unknown": "Die Richtlinie konnte nicht gespeichert werden.",
+        "invalid_retention": "Die Aufbewahrung ist ungültig."
+      },
+      "keep": "Aufbewahrung",
+      "retention": {
+        "label": "Welche Sicherungen bleiben?",
+        "all": "Alle behalten",
+        "rules": "Nach Regeln",
+        "allHint": "Es wird nie etwas gelöscht. Die Sicherungen sammeln sich an, bis du sie selbst löschst.",
+        "hint": "Jede Zahl behält die neueste Sicherung der letzten Stunden, Tage, Wochen, Monate oder Jahre. „Die letzten“ behält die neuesten Sicherungen, egal wann sie entstanden. Eine Sicherung bleibt, wenn eine Regel sie behält. Alles andere wird gelöscht. Leere Felder zählen als 0."
+      },
+      "exportTitle": "Export",
+      "export": {
+        "label": "Speicherorte",
+        "hint": "Wähle, wohin jede Sicherung zusätzlich kopiert wird: verschlüsselt, ohne doppelte Daten, und ab der zweiten Kopie nur, was sich geändert hat. Ohne Auswahl bleibt die Sicherung im Cluster.",
+        "none": "Es gibt noch keinen Speicherort.",
+        "create": "Speicherort anlegen",
+        "error": "Die Speicherorte konnten nicht geladen werden.",
+        "testFailed": "Test fehlgeschlagen"
+      }
+    },
+    "preview": {
+      "title": "Vorschau",
+      "runs": "Die nächsten Läufe",
+      "applications": "Gesichert werden",
+      "noApplications": "Zurzeit passt keine Anwendung. Die Richtlinie sichert, sobald eine passt.",
+      "incomplete": "Fülle Auswahl und Zeitplan aus, dann siehst du hier die nächsten Läufe.",
+      "errors": {
+        "invalid_schedule": "Dieser Zeitplan ist ungültig. Prüfe die Cron-Angabe.",
+        "invalid_selector": "Die Auswahl der Anwendungen ist ungültig.",
+        "unknown": "Die Vorschau konnte nicht berechnet werden.",
+        "invalid_retention": "Die Aufbewahrung ist ungültig."
+      }
+    },
+    "retention": {
+      "keepAll": "Alle Sicherungen bleiben erhalten",
+      "keeps": "Behält {{parts}}",
+      "parts": {
+        "last": "die letzten {{n}}",
+        "hourly": "{{n}} stündliche",
+        "daily": "{{n}} tägliche",
+        "weekly": "{{n}} wöchentliche",
+        "monthly": "{{n}} monatliche",
+        "yearly": "{{n}} jährliche"
+      },
+      "labels": {
+        "last": "Die letzten",
+        "hourly": "Stündliche",
+        "daily": "Tägliche",
+        "weekly": "Wöchentliche",
+        "monthly": "Monatliche",
+        "yearly": "Jährliche"
+      },
+      "reasons": {
+        "not_kept": "keine Regel behält sie",
+        "failed_expired": "fehlgeschlagen und älter als 7 Tage"
+      },
+      "previewTitle": "Was beim Speichern passiert",
+      "deletesNothing": "Es würde nichts gelöscht.",
+      "deletes": "{{n}} Sicherungen würden gelöscht, {{kept}} bleiben.",
+      "more": "… und {{n}} weitere",
+      "busy": "Gerade läuft eine Sicherung für: {{names}}. Dort wird nichts gelöscht, bis sie fertig ist.",
+      "previewFailed": "Die Vorschau konnte nicht berechnet werden.",
+      "checkFailed": "Restora konnte nicht prüfen, was gelöscht würde. Es wurde nichts gespeichert.",
+      "newHint": "Die Regeln greifen auf die Sicherungen dieser Richtlinie. Sobald sie welche gemacht hat, siehst du beim Bearbeiten vor dem Speichern, was gelöscht würde.",
+      "confirm": {
+        "title": "Sicherungen löschen?",
+        "intro": "Mit diesen Regeln werden {{n}} vorhandene Sicherungen gelöscht, {{kept}} bleiben.",
+        "permanent": "Das Löschen lässt sich nicht rückgängig machen. Es passiert kurz nach dem Speichern.",
+        "cancel": "Abbrechen",
+        "confirm": "Speichern und {{n}} löschen"
+      }
+    },
+    "run": {
+      "started": "Die Richtlinie läuft: {{n}} Sicherung(en) gestartet.",
+      "toActivity": "Zur Aktivität"
+    }
+  },
+  "locations": {
+    "title": "Speicherorte",
+    "subtitle": "Hier landen später deine Sicherungen außerhalb des Clusters. Lege einen Ort an und teste die Verbindung.",
+    "create": "Speicherort anlegen",
+    "back": "Zurück zu den Speicherorten",
+    "actionFailed": "Die Aktion konnte nicht ausgeführt werden.",
+    "type": {
+      "s3": "S3-kompatibel",
+      "nfs": "NFS"
+    },
+    "test": {
+      "pending": "Wird getestet …",
+      "succeeded": "Verbindung steht",
+      "failed": "Test fehlgeschlagen",
+      "pendingHint": "Restora testet die Verbindung. Das dauert meist wenige Sekunden.",
+      "at": "Getestet am {{time}}"
+    },
+    "checks": {
+      "connect": "Verbindung herstellen",
+      "mount": "Freigabe einbinden",
+      "write": "Testdatei schreiben",
+      "read": "Testdatei lesen",
+      "delete": "Testdatei löschen"
+    },
+    "errors": {
+      "credentials_missing": {
+        "text": "Die Zugangsdaten für diesen Speicherort fehlen.",
+        "hint": "Bearbeite den Speicherort und gib Access Key und Secret Key neu ein."
+      },
+      "invalid_credentials": {
+        "text": "Der Speicher hat den Access Key oder den Secret Key abgelehnt.",
+        "hint": "Prüfe beide Werte auf Tippfehler und ob der Schlüssel noch gültig ist. Du kannst sie über Bearbeiten neu eingeben."
+      },
+      "access_denied": {
+        "text": "Die Zugangsdaten sind gültig, aber sie dürfen in diesem Bucket nicht alles, was Restora braucht.",
+        "hint": "Der Schlüssel muss im Bucket auflisten, schreiben, lesen und löschen dürfen."
+      },
+      "bucket_not_found": {
+        "text": "Das Bucket gibt es auf diesem Speicher nicht.",
+        "hint": "Prüfe den Namen des Buckets oder lege es beim Anbieter an."
+      },
+      "endpoint_unreachable": {
+        "text": "Restora erreicht den Speicher unter dieser Adresse nicht.",
+        "hint": "Prüfe Adresse und Port, ob http oder https stimmt und ob der Cluster den Speicher erreichen darf (Firewall, DNS)."
+      },
+      "tls_error": {
+        "text": "Dem Zertifikat des Speichers wird nicht vertraut.",
+        "hint": "Nutze ein Zertifikat einer bekannten Stelle. Nur für Tests kannst du die Prüfung des Zertifikats ausschalten."
+      },
+      "timeout": {
+        "text": "Der Speicher hat nicht rechtzeitig geantwortet.",
+        "hint": "Prüfe, ob der Speicher erreichbar und nicht überlastet ist, und teste noch einmal."
+      },
+      "nfs_mount_failed": {
+        "text": "Die NFS-Freigabe lässt sich nicht einbinden.",
+        "hint": "Prüfe Server und Pfad, ob der NFS-Server die Knoten des Clusters zulassen und ob die Knoten einen NFS-Client haben."
+      },
+      "nfs_not_writable": {
+        "text": "Die Freigabe ist eingebunden, aber Restora darf dort nicht schreiben.",
+        "hint": "Erlaube dem Benutzer mit der Nummer 65532 das Schreiben im freigegebenen Verzeichnis."
+      },
+      "test_failed": {
+        "text": "Der Test ist fehlgeschlagen.",
+        "hint": "Die technischen Details unten helfen bei der Suche nach der Ursache."
+      },
+      "unknown": {
+        "text": "Der Test ist fehlgeschlagen.",
+        "hint": "Die technischen Details unten helfen bei der Suche nach der Ursache."
+      },
+      "protocol_mismatch": {
+        "text": "Die Adresse passt nicht zum Protokoll des Speichers.",
+        "hint": "Wechsle in der Adresse zwischen http:// und https://. Selbst betriebene Speicher im Cluster nutzen oft http://."
+      }
+    },
+    "card": {
+      "type": "Art",
+      "endpoint": "Adresse",
+      "bucket": "Bucket",
+      "credentials": "Zugangsdaten",
+      "credentialsSet": "Gespeichert (nicht sichtbar)",
+      "credentialsMissing": "Fehlen",
+      "server": "Server",
+      "path": "Pfad",
+      "test": "Verbindung testen",
+      "edit": "Bearbeiten",
+      "delete": "Löschen",
+      "exports": "Gespeichert",
+      "exportCount": "{{n}} Sicherungen"
+    },
+    "empty": {
+      "title": "Noch kein Speicherort",
+      "text": "Ein Speicherort ist ein Ort außerhalb des Clusters, an dem Sicherungen später zusätzlich liegen können, zum Beispiel ein S3-Bucket oder eine NFS-Freigabe. Lege einen an und prüfe, ob die Verbindung klappt."
+    },
+    "error": {
+      "title": "Speicherorte konnten nicht geladen werden",
+      "text": "Restora kann die Liste gerade nicht lesen.",
+      "hint": "Prüfe, ob restora-api läuft und im Cluster lesen darf, und versuche es dann noch einmal."
+    },
+    "notFound": {
+      "title": "Diesen Speicherort gibt es nicht",
+      "text": "Er wurde vielleicht gelöscht. Geh zurück zur Liste."
+    },
+    "delete": {
+      "title": "Speicherort löschen?",
+      "intro": "Der Speicherort {{name}} wird gelöscht.",
+      "forgets": "Restora vergisst die Adresse und die gespeicherten Zugangsdaten.",
+      "keeps": "Daten, die dort schon liegen, bleiben unangetastet.",
+      "cancel": "Abbrechen",
+      "confirm": "Jetzt löschen",
+      "failed": "Der Speicherort konnte nicht gelöscht werden.",
+      "exports": "Dort liegen {{n}} Sicherungen. Sie bleiben im Speicher, lassen sich danach aber nicht mehr aus Restora wiederherstellen.",
+      "errors": {
+        "location_in_use": "Eine Richtlinie kopiert noch in diesen Speicherort. Nimm ihn aus der Richtlinie heraus oder lösche die Richtlinie."
+      }
+    },
+    "form": {
+      "titleNew": "Speicherort anlegen",
+      "titleEdit": "Speicherort bearbeiten",
+      "subtitle": "Nach dem Speichern testet Restora die Verbindung und zeigt dir das Ergebnis.",
+      "general": "Allgemein",
+      "storage": "Speicher",
+      "credentials": "Zugangsdaten",
+      "share": "Freigabe",
+      "type": "Art des Speichers",
+      "cancel": "Abbrechen",
+      "create": "Speicherort anlegen",
+      "save": "Änderungen speichern",
+      "saving": "Wird gespeichert …",
+      "testHint": "Beim Test legt Restora eine kleine Testdatei an, liest sie und löscht sie wieder.",
+      "name": {
+        "label": "Name",
+        "placeholder": "Zum Beispiel: Firmen-MinIO"
+      },
+      "endpoint": {
+        "label": "Adresse des Speichers",
+        "hint": "Mit http:// oder https://, bei eigenem Speicher meist mit Port. Ohne Angabe gilt https."
+      },
+      "bucket": {
+        "label": "Bucket",
+        "hint": "Der Name des Buckets. Er muss schon existieren."
+      },
+      "prefix": {
+        "label": "Ordner im Bucket (optional)",
+        "hint": "Restora legt alles unter diesem Ordner ab. Leer lassen für die oberste Ebene."
+      },
+      "region": {
+        "label": "Region (optional)",
+        "hint": "Bei Amazon S3 nötig, bei eigenem Speicher meist leer."
+      },
+      "pathStyle": {
+        "label": "Bucket im Pfad ansprechen",
+        "hint": "Nötig für MinIO und die meisten selbst betriebenen Speicher. Amazon S3 braucht es nicht."
+      },
+      "skipTLS": {
+        "label": "Zertifikat nicht prüfen",
+        "hint": "Nur für Tests mit einem selbst signierten Zertifikat.",
+        "warning": "Ohne Prüfung kann sich jemand als dein Speicher ausgeben. Nutze das nicht für echte Daten."
+      },
+      "keys": {
+        "hint": "Restora legt die Zugangsdaten als Kubernetes-Secret ab. Sie sind danach nirgends mehr sichtbar.",
+        "keepHint": "Die gespeicherten Zugangsdaten bleiben erhalten. Gib beide Felder nur ein, wenn du sie ersetzen willst.",
+        "unchanged": "unverändert"
+      },
+      "accessKey": {
+        "label": "Access Key"
+      },
+      "secretKey": {
+        "label": "Secret Key"
+      },
+      "nfs": {
+        "hint": "Der Cluster bindet die Freigabe selbst ein. Der Benutzer mit der Nummer 65532 muss dort schreiben dürfen."
+      },
+      "server": {
+        "label": "NFS-Server"
+      },
+      "path": {
+        "label": "Pfad",
+        "hint": "Das freigegebene Verzeichnis auf dem Server, zum Beispiel /exports/restora."
+      },
+      "problems": {
+        "summary": "Bitte prüfe die markierten Felder.",
+        "name": "Gib dem Speicherort einen Namen.",
+        "endpoint": "Gib die Adresse des Speichers an.",
+        "bucket": "Gib einen gültigen Bucket-Namen an: 3 bis 63 Kleinbuchstaben, Ziffern, Punkte oder Bindestriche.",
+        "accessKey": "Gib den Access Key an.",
+        "secretKey": "Gib den Secret Key an.",
+        "server": "Gib den NFS-Server an.",
+        "path": "Gib den Pfad mit einem Schrägstrich am Anfang an."
+      },
+      "saveErrors": {
+        "location_name_taken": "Ein anderer Speicherort hat schon diesen Namen.",
+        "invalid_location": "Eine Angabe ist ungültig.",
+        "cluster_unreachable": "Restora konnte den Speicherort nicht speichern.",
+        "unknown": "Der Speicherort konnte nicht gespeichert werden."
+      }
+    }
+  },
+  "snapshots": {
+    "title": "Sicherungen",
+    "running": "Eine Sicherung läuft. Die nächste kannst du starten, sobald sie fertig ist.",
+    "backup": {
+      "button": "Jetzt sichern",
+      "starting": "Wird gestartet …",
+      "errors": {
+        "snapshot_in_progress": "Für diese Anwendung läuft schon eine Sicherung.",
+        "application_not_found": "Diese Anwendung gibt es nicht mehr.",
+        "cluster_unreachable": "Restora konnte die Sicherung nicht starten.",
+        "unknown": "Die Sicherung konnte nicht gestartet werden.",
+        "restore_in_progress": "Für diese Anwendung läuft gerade eine Wiederherstellung."
+      }
+    },
+    "steps": {
+      "exportResources": "Ressourcen speichern",
+      "snapshotVolumes": "Volumes sichern",
+      "exportToLocation": "In Speicherorte kopieren"
+    },
+    "summary": "Volumes: {{volumes}} · Ressourcen: {{resources}} · Größe: {{size}}",
+    "empty": {
+      "title": "Noch keine Sicherung",
+      "text": "Sichere diese Anwendung jetzt, damit du sie später wiederherstellen kannst. Gesichert werden alle Volumes und die Einstellungen der Anwendung."
+    },
+    "error": {
+      "title": "Sicherungen konnten nicht geladen werden",
+      "text": "Restora kann die Liste gerade nicht lesen. Versuche es noch einmal."
+    },
+    "errors": {
+      "snapshot_class_missing": {
+        "text": "Für den Speichertreiber dieser Volumes gibt es keine Snapshot-Klasse (VolumeSnapshotClass).",
+        "hint": "Lege für den Treiber eine VolumeSnapshotClass an und starte die Sicherung erneut."
+      },
+      "volume_not_bound": {
+        "text": "Ein Volume dieser Anwendung ist noch keinem Speicher zugewiesen.",
+        "hint": "Warte, bis das Volume gebunden ist (der zugehörige Pod muss laufen), und versuche es dann erneut."
+      },
+      "volume_not_snapshottable": {
+        "text": "Ein Volume nutzt keinen CSI-Treiber und kann deshalb nicht gesichert werden.",
+        "hint": "Nur Volumes einer CSI-Speicherklasse unterstützen Snapshots. Verschiebe die Daten auf eine solche Speicherklasse."
+      },
+      "application_missing": {
+        "text": "Die Anwendung wurde gelöscht, bevor die Sicherung begann.",
+        "hint": "Wähle eine Anwendung, die es noch gibt."
+      },
+      "export_failed": {
+        "text": "Die Einstellungen der Anwendung konnten nicht gespeichert werden.",
+        "hint": "Prüfe, ob der Restora-Controller die Ressourcen lesen darf und sein Datenvolume freien Platz hat."
+      },
+      "snapshot_failed": {
+        "text": "Der Speichertreiber hat beim Sichern einen Fehler gemeldet.",
+        "hint": "Sieh in die Logs des Treibers und in die Ereignisse des VolumeSnapshots und starte dann eine neue Sicherung."
+      },
+      "timeout": {
+        "text": "Die Sicherung wurde nicht rechtzeitig fertig.",
+        "hint": "Prüfe den Speichertreiber und den Snapshot-Controller deines Clusters und starte dann eine neue Sicherung."
+      },
+      "unknown": {
+        "text": "Die Sicherung ist fehlgeschlagen.",
+        "hint": "Die technischen Details unten helfen bei der Suche nach der Ursache."
+      }
+    },
+    "delete": {
+      "button": "Löschen",
+      "title": "Sicherung löschen?",
+      "intro": "Die Sicherung von {{application}} vom {{time}} wird gelöscht.",
+      "loses": "Du kannst die Anwendung danach nicht mehr auf diesen Stand zurücksetzen.",
+      "permanent": "Die Volume-Snapshots und die gespeicherten Einstellungen werden entfernt. Das lässt sich nicht rückgängig machen.",
+      "cancel": "Abbrechen",
+      "confirm": "Jetzt löschen",
+      "errors": {
+        "snapshot_running": "Diese Sicherung läuft noch und kann nicht gelöscht werden.",
+        "snapshot_in_use": "Eine Wiederherstellung benutzt diese Sicherung gerade.",
+        "snapshot_not_found": "Diese Sicherung gibt es nicht mehr.",
+        "cluster_unreachable": "Restora konnte die Sicherung nicht löschen.",
+        "unknown": "Die Sicherung konnte nicht gelöscht werden."
+      }
+    }
+  },
+  "restores": {
+    "title": "Wiederherstellungen",
+    "button": "Wiederherstellen",
+    "running": "Eine Wiederherstellung läuft. Sicherungen und weitere Wiederherstellungen sind bis dahin gesperrt.",
+    "fromSnapshot": "Aus der Sicherung vom {{time}}",
+    "fromUnknownSnapshot": "Aus einer Sicherung, die nicht mehr in der Liste steht",
+    "summary": "Ressourcen: {{created}} neu, {{updated}} aktualisiert",
+    "warnings": "Hinweise ({{skipped}})",
+    "error": {
+      "title": "Wiederherstellungen konnten nicht geladen werden",
+      "text": "Restora kann die Liste gerade nicht lesen. Versuche es noch einmal."
+    },
+    "steps": {
+      "checkSnapshot": "Sicherung prüfen",
+      "stopWorkloads": "Programme stoppen",
+      "restoreVolumes": "Volumes neu erstellen",
+      "restoreResources": "Ressourcen anwenden",
+      "waitReady": "Auf den Start warten"
+    },
+    "dialog": {
+      "title": "Anwendung wiederherstellen?",
+      "intro": "Die Anwendung {{application}} wird auf den Stand der Sicherung vom {{time}} zurückgesetzt.",
+      "volumes": "Die Volumes {{volumes}} werden gelöscht und aus der Sicherung neu erstellt. Alles, was seit dieser Sicherung geschrieben wurde, geht verloren.",
+      "noVolumes": "Diese Sicherung enthält keine Volumes. Es werden nur die gespeicherten Ressourcen angewendet.",
+      "resources": "{{resources}} gespeicherte Ressourcen werden angewendet. Ressourcen mit gleichem Namen in der Anwendung werden überschrieben.",
+      "downtime": "Programme, die diese Volumes nutzen, werden gestoppt und danach wieder gestartet. Die Anwendung ist so lange nicht erreichbar.",
+      "cancel": "Abbrechen",
+      "confirm": "Jetzt wiederherstellen",
+      "starting": "Wird gestartet …",
+      "startFailed": "Die Wiederherstellung konnte nicht gestartet werden."
+    },
+    "errors": {
+      "snapshot_not_found": {
+        "text": "Diese Sicherung gibt es nicht mehr.",
+        "hint": "Wähle eine andere Sicherung."
+      },
+      "snapshot_not_ready": {
+        "text": "Diese Sicherung ist nicht vollständig und kann nicht wiederhergestellt werden.",
+        "hint": "Wähle eine Sicherung, die erfolgreich fertig wurde."
+      },
+      "restore_in_progress": {
+        "text": "Für diese Anwendung läuft schon eine Wiederherstellung.",
+        "hint": "Warte, bis sie fertig ist."
+      },
+      "snapshot_in_progress": {
+        "text": "Für diese Anwendung läuft gerade eine Sicherung.",
+        "hint": "Warte, bis sie fertig ist, und stelle dann wieder her."
+      },
+      "cluster_unreachable": {
+        "text": "Restora konnte die Wiederherstellung nicht starten.",
+        "hint": "Prüfe, ob der Dienst restora-api Wiederherstellungen anlegen darf und der Cluster erreichbar ist."
+      },
+      "application_missing": {
+        "text": "Der Namespace der Anwendung existiert nicht mehr.",
+        "hint": "Lege den Namespace wieder an und stelle dann wieder her. Die Wiederherstellung in einen gelöschten Namespace folgt später."
+      },
+      "volume_snapshot_missing": {
+        "text": "Ein Snapshot der Volumes wurde außerhalb von Restora gelöscht oder ist nicht benutzbar.",
+        "hint": "Diese Sicherung kann nicht wiederhergestellt werden. Prüfe den Speichertreiber."
+      },
+      "export_missing": {
+        "text": "Die gespeicherten Einstellungen dieser Sicherung sind nicht mehr lesbar.",
+        "hint": "Das Datenvolume von Restora hat die Dateien verloren. Diese Sicherung kann nicht wiederhergestellt werden."
+      },
+      "volume_in_use": {
+        "text": "Ein Pod nutzt ein Volume, das ersetzt werden muss, gehört aber zu keinem Deployment oder StatefulSet.",
+        "hint": "Stoppe oder lösche diesen Pod selbst und starte die Wiederherstellung dann erneut. Es wurde noch nichts verändert."
+      },
+      "timeout": {
+        "text": "Die Wiederherstellung wurde nicht rechtzeitig fertig.",
+        "hint": "Prüfe, ob die Pods der Anwendung stoppen und der Speichertreiber Volumes aus Snapshots erstellen kann. Starte dann eine neue Wiederherstellung. Die Sicherung ist unverändert."
+      },
+      "workloads_not_ready": {
+        "text": "Die Daten sind wiederhergestellt, aber die Anwendung ist nicht rechtzeitig gestartet.",
+        "hint": "Sieh dir die Pods und Ereignisse der Anwendung an. Die Sicherung selbst ist unverändert."
+      },
+      "unknown": {
+        "text": "Die Wiederherstellung ist fehlgeschlagen.",
+        "hint": "Die technischen Details unten helfen bei der Suche nach der Ursache. Die Sicherung ist unverändert, du kannst es erneut versuchen."
+      },
+      "export_not_found": {
+        "text": "Diese gespeicherte Sicherung gibt es nicht mehr.",
+        "hint": "Wähle eine andere."
+      },
+      "repository_key_missing": {
+        "text": "Der Schlüssel des Speicherorts ist in diesem Cluster nicht vorhanden. Ohne ihn lassen sich die Sicherungen dort nicht lesen.",
+        "hint": "Stelle das Secret restora-repo-… aus einer Kopie des Schlüssels wieder her. Es wurde noch nichts verändert."
+      },
+      "repository_password_invalid": {
+        "text": "Der Schlüssel dieses Clusters passt nicht zum Speicherort.",
+        "hint": "Stelle den richtigen Schlüssel im Secret restora-repo-… wieder her. Es wurde noch nichts verändert."
+      },
+      "location_missing": {
+        "text": "Den Speicherort dieser Sicherung gibt es nicht mehr.",
+        "hint": "Lege den Speicherort wieder an. Es wurde noch nichts verändert."
+      },
+      "credentials_missing": {
+        "text": "Die Zugangsdaten des Speicherorts fehlen.",
+        "hint": "Bearbeite den Speicherort und gib die Zugangsdaten neu ein."
+      },
+      "bundle_missing": {
+        "text": "Die gespeicherten Einstellungen der Anwendung lassen sich im Speicherort nicht lesen.",
+        "hint": "Diese Sicherung ist unvollständig. Wähle eine andere."
+      },
+      "mover_not_started": {
+        "text": "Der Pod, der die Daten zurückholt, startet nicht.",
+        "hint": "Prüfe, ob der Cluster im Namespace der Anwendung Pods starten darf und ob das Image von Restora geladen werden kann."
+      },
+      "access_denied": {
+        "text": "Der Speicher hat das Lesen abgelehnt.",
+        "hint": "Teste den Speicherort und prüfe die Rechte des Schlüssels."
+      },
+      "bucket_not_found": {
+        "text": "Das Bucket gibt es nicht mehr.",
+        "hint": "Teste den Speicherort und prüfe den Namen des Buckets."
+      },
+      "endpoint_unreachable": {
+        "text": "Der Speicher ist von den Knoten des Clusters aus nicht erreichbar.",
+        "hint": "Teste den Speicherort und prüfe Adresse, Netzwerk und Firewall."
+      },
+      "nfs_not_writable": {
+        "text": "Die NFS-Freigabe lässt den Zugriff für die Wiederherstellung nicht zu.",
+        "hint": "Die Wiederherstellung läuft als Benutzer root. Die Freigabe darf root nicht abbilden (no_root_squash)."
+      },
+      "snapshot_not_in_repository": {
+        "text": "Diese Sicherung liegt nicht (mehr) im Speicherort.",
+        "hint": "Wähle eine andere Sicherung."
+      },
+      "export_unavailable": {
+        "text": "Diese Version von Restora kann nicht aus Speicherorten wiederherstellen.",
+        "hint": "Aktualisiere den Restora-Controller."
+      },
+      "export_failed": {
+        "text": "Das Zurückholen aus dem Speicherort ist fehlgeschlagen.",
+        "hint": "Die technischen Details unten helfen bei der Suche nach der Ursache. Die gespeicherte Sicherung ist unverändert, du kannst es erneut versuchen."
+      }
+    },
+    "fromExport": "Aus dem Speicherort {{location}}, Stand {{time}}",
+    "exportDialog": {
+      "intro": "Die Anwendung {{application}} wird aus dem Speicherort {{location}} auf den Stand vom {{time}} gebracht.",
+      "missing": "Den Namespace {{application}} gibt es nicht mehr. Restora legt ihn neu an.",
+      "volumesNew": "Die Volumes {{volumes}} werden neu angelegt und aus dem Speicherort gefüllt.",
+      "duration": "Das Zurückholen von {{size}} über das Netzwerk kann einige Minuten dauern."
+    }
+  },
+  "exports": {
+    "title": "Kopien in Speicherorten",
+    "summary": "Volumes: {{size}} · neu im Speicher: {{added}}",
+    "progress": "Volumes kopiert: {{done}} von {{total}}",
+    "progressResources": "Ressourcen werden gespeichert …",
+    "errors": {
+      "repository_password_invalid": {
+        "text": "Der Speicherort ist mit einem anderen Schlüssel verschlüsselt, als dieser Cluster kennt.",
+        "hint": "Dort liegt schon ein Archiv eines anderen Restora. Nutze einen leeren Ordner im Bucket (Ordner im Bucket) oder stelle den Schlüssel dieses Archivs im Secret restora-repo-… wieder her."
+      },
+      "access_denied": {
+        "text": "Der Speicher hat das Schreiben abgelehnt.",
+        "hint": "Teste den Speicherort und prüfe die Rechte des Schlüssels: Er muss schreiben, lesen und löschen dürfen."
+      },
+      "bucket_not_found": {
+        "text": "Das Bucket gibt es nicht mehr.",
+        "hint": "Teste den Speicherort und prüfe den Namen des Buckets."
+      },
+      "endpoint_unreachable": {
+        "text": "Der Speicher ist von den Knoten des Clusters aus nicht erreichbar.",
+        "hint": "Teste den Speicherort und prüfe Adresse, Netzwerk und Firewall. Die Kopie läuft in einem Pod neben der Anwendung."
+      },
+      "nfs_not_writable": {
+        "text": "Die NFS-Freigabe lässt das Schreiben für die Kopie nicht zu.",
+        "hint": "Die Kopie läuft als Benutzer root. Die Freigabe darf root nicht abbilden (no_root_squash)."
+      },
+      "location_missing": {
+        "text": "Den Speicherort gibt es nicht mehr.",
+        "hint": "Wähle in der Richtlinie einen anderen Speicherort."
+      },
+      "credentials_missing": {
+        "text": "Die Zugangsdaten des Speicherorts fehlen.",
+        "hint": "Bearbeite den Speicherort und gib Access Key und Secret Key neu ein."
+      },
+      "bundle_missing": {
+        "text": "Die gespeicherten Einstellungen dieser Sicherung sind nicht mehr lesbar.",
+        "hint": "Das Datenvolume von Restora hat die Datei verloren. Diese Sicherung lässt sich nicht kopieren, mach eine neue."
+      },
+      "bundle_too_large": {
+        "text": "Die Einstellungen der Anwendung sind zu groß für die Kopie.",
+        "hint": "Verringere die Zahl der ConfigMaps, Secrets und anderen Ressourcen der Anwendung."
+      },
+      "mover_not_started": {
+        "text": "Der Pod, der die Daten kopiert, startet nicht.",
+        "hint": "Prüfe, ob der Cluster im Namespace der Anwendung Pods starten darf (zum Beispiel Pod-Sicherheitsregeln) und ob das Image von Restora geladen werden kann."
+      },
+      "export_unavailable": {
+        "text": "Diese Version von Restora kann nicht in Speicherorte kopieren.",
+        "hint": "Aktualisiere den Restora-Controller."
+      },
+      "export_failed": {
+        "text": "Die Kopie in den Speicherort ist fehlgeschlagen.",
+        "hint": "Die technischen Details unten helfen bei der Suche nach der Ursache. Die lokale Sicherung ist in Ordnung."
+      },
+      "unknown": {
+        "text": "Die Kopie in den Speicherort ist fehlgeschlagen.",
+        "hint": "Die technischen Details unten helfen bei der Suche nach der Ursache. Die lokale Sicherung ist in Ordnung."
+      }
+    },
+    "card": {
+      "title": "Sicherungen in Speicherorten",
+      "intro": "Diese Kopien liegen außerhalb des Clusters. Du kannst die Anwendung daraus wiederherstellen, auch wenn die lokale Sicherung oder der ganze Namespace weg ist.",
+      "summary": "Volumes: {{volumes}} · Ressourcen: {{resources}} · Größe: {{size}}",
+      "restore": "Aus Speicherort wiederherstellen",
+      "error": {
+        "title": "Gespeicherte Sicherungen konnten nicht geladen werden",
+        "text": "Restora kann die Liste gerade nicht lesen. Versuche es noch einmal."
+      }
+    },
+    "deleted": {
+      "badge": "Gelöscht",
+      "text": "Diese Anwendung gibt es im Cluster nicht mehr. Ihre Sicherungen liegen noch in Speicherorten. Du kannst sie von dort wiederherstellen: Restora legt den Namespace neu an und holt Volumes und Einstellungen zurück."
+    }
+  },
+  "setup": {
+    "title": "Einrichtung",
+    "subtitle": "In vier Schritten von der frischen Installation zur Sicherung, die nachweislich zurückkommt.",
+    "later": "Später fortsetzen",
+    "error": {
+      "title": "Der Stand der Einrichtung konnte nicht gelesen werden",
+      "text": "Restora kann den Cluster gerade nicht abfragen. Versuche es noch einmal."
+    },
+    "steps": {
+      "label": "Schritte der Einrichtung",
+      "location": "Speicherort",
+      "policy": "Richtlinie",
+      "run": "Probelauf",
+      "restore": "Wiederherstellungstest",
+      "done": "erledigt",
+      "current": "aktueller Schritt",
+      "todo": "noch offen",
+      "position": "Schritt {{n}} von {{total}}: {{name}}",
+      "allDone": "Alle Schritte sind erledigt."
+    },
+    "location": {
+      "title": "Wohin sollen die Sicherungen?",
+      "intro": "Sicherungen im Cluster gehen mit dem Cluster verloren. Lege einen Speicherort außerhalb an, zum Beispiel einen S3-Bucket oder eine NFS-Freigabe. Nach dem Speichern testet Restora die Verbindung, und es geht automatisch weiter, sobald sie klappt.",
+      "change": "Einstellungen ändern",
+      "another": "Anderen Speicherort anlegen"
+    },
+    "policy": {
+      "title": "Wann und was wird gesichert?",
+      "intro": "Eine Richtlinie sichert automatisch nach Zeitplan und kopiert jede Sicherung in den Speicherort. Die Vorschläge passen für den Anfang: alle Anwendungen, jede Nacht um 2 Uhr. Du kannst alles später ändern, auch die Aufbewahrung.",
+      "defaultName": "Tägliche Sicherung"
+    },
+    "run": {
+      "title": "Probelauf: sichere jetzt einmal",
+      "intro": "Restora sichert jetzt {{applications}} und kopiert die Sicherung in den Speicherort. Das dauert je nach Größe ein bis ein paar Minuten. Du siehst hier, wie es läuft.",
+      "start": "Probelauf starten",
+      "running": "Läuft …",
+      "again": "Erneut versuchen",
+      "noApplications": "Zurzeit passt keine Anwendung zur Richtlinie. Starte eine Anwendung oder ändere die Auswahl der Richtlinie.",
+      "startFailed": "Der Probelauf konnte nicht gestartet werden.",
+      "skipped": "Übersprungen: {{names}}",
+      "result": "Ergebnis"
+    },
+    "restore": {
+      "title": "Prüfe, ob die Wiederherstellung klappt",
+      "intro": "Eine Sicherung, die noch nie zurückgeholt wurde, ist nur eine Hoffnung. Restora holt jetzt {{application}} aus dem Speicherort zurück und prüft damit den ganzen Weg: Speicherort, Schlüssel und Daten.",
+      "warning": "Achtung: Dabei werden die Volumes von {{application}} durch die Probesicherung ersetzt. Alles, was seit dem Probelauf geschrieben wurde, geht verloren. Die Anwendung ist kurz nicht erreichbar. Wenn du das nicht möchtest, überspringe den Schritt.",
+      "backup": "Sicherung, die zurückgeholt wird",
+      "start": "Wiederherstellung testen",
+      "again": "Erneut versuchen",
+      "running": "Läuft …",
+      "skip": "Überspringen",
+      "result": "Ergebnis"
+    },
+    "done": {
+      "title": "Alles bereit",
+      "text": "Die Sicherung läuft nach Zeitplan, landet verschlüsselt im Speicherort und ist nachweislich wiederherstellbar. Restora macht den Rest.",
+      "policies": "Zu den Richtlinien",
+      "activity": "Zur Aktivität"
+    },
+    "banner": {
+      "title": "Restora einrichten",
+      "text": "Schritt {{n}} von {{total}}: {{name}}. Die Einrichtung dauert wenige Minuten.",
+      "start": "Einrichtung starten",
+      "continue": "Einrichtung fortsetzen",
+      "dismiss": "Nicht mehr anzeigen"
+    },
+    "settings": {
+      "title": "Einrichtungsassistent",
+      "text": "Führt dich in vier Schritten von der Installation zur ersten Sicherung, die nachweislich zurückkommt.",
+      "open": "Assistent öffnen"
+    }
+  }
+}

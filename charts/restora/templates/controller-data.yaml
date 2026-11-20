@@ -1,0 +1,17 @@
+# Holds the exported resources of each snapshot until backups can go to external storage (phase 8).
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: restora-controller-data
+  namespace: {{ .Release.Namespace }}
+  labels:
+    {{- include "restora.labels" . | nindent 4 }}
+    app.kubernetes.io/component: controller
+spec:
+  accessModes: ["ReadWriteOnce"]
+  {{- with .Values.controller.persistence.storageClass }}
+  storageClassName: {{ . | quote }}
+  {{- end }}
+  resources:
+    requests:
+      storage: {{ .Values.controller.persistence.size }}

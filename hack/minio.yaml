@@ -1,0 +1,82 @@
+# S3-kompatibler Testspeicher für Restora: MinIO mit einem Bucket "restora".
+# Nur für den lokalen Entwicklungs-Cluster "restora-dev". Die Zugangsdaten sind Testwerte.
+#
+#   Endpoint:   http://minio.minio:9000
+#   Bucket:     restora
+#   Access Key: restora-test
+#   Secret Key: restora-test-secret
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: minio
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: minio-root
+  namespace: minio
+type: Opaque
+stringData:
+  MINIO_ROOT_USER: restora-test
+  MINIO_ROOT_PASSWORD: restora-test-secret
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: minio
+  namespace: minio
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: minio
+  template:
+    metadata:
+      labels:
+        app: minio
+    spec:
+      # MinIO no longer publishes images on Docker Hub or Quay, so the test setup uses the Chainguard build.
+      securityContext:
+        runAsUser: 65532
+        fsGroup: 65532
+      initContainers:
+        # MinIO in single-disk mode treats every top-level directory as a bucket.
+        - name: bucket
+          image: busybox:1.37
+          command: ["sh", "-c", "mkdir -p /data/restora"]
+          volumeMounts:
+            - name: data
+              mountPath: /data
+      containers:
+        - name: minio
+          image: cgr.dev/chainguard/minio:latest
+          args: ["server", "/data", "--console-address", ":9001"]
+          envFrom:
+            - secretRef:
+                name: minio-root
+          ports:
+            - name: s3
+              containerPort: 9000
+          readinessProbe:
+            httpGet:
+              path: /minio/health/ready
+              port: s3
+          volumeMounts:
+            - name: data
+              mountPath: /data
+      volumes:
+        - name: data
+          emptyDir: {}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: minio
+  namespace: minio
+spec:
+  selector:
+    app: minio
+  ports:
+    - name: s3
+      port: 9000
+      targetPort: s3

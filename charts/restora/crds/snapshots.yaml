@@ -1,0 +1,203 @@
+# Helm installs files in crds/ once and never upgrades them. hack/dev-install.sh applies this file on every run.
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  name: snapshots.restora.local
+spec:
+  group: restora.local
+  scope: Namespaced
+  names:
+    kind: Snapshot
+    listKind: SnapshotList
+    plural: snapshots
+    singular: snapshot
+  versions:
+    - name: v1alpha1
+      served: true
+      storage: true
+      subresources:
+        status: {}
+      additionalPrinterColumns:
+        - name: Application
+          type: string
+          jsonPath: .spec.application
+        - name: Phase
+          type: string
+          jsonPath: .status.phase
+        - name: Age
+          type: date
+          jsonPath: .metadata.creationTimestamp
+      schema:
+        openAPIV3Schema:
+          type: object
+          required: ["spec"]
+          properties:
+            spec:
+              type: object
+              required: ["application"]
+              properties:
+                application:
+                  type: string
+                  minLength: 1
+                  description: Namespace to back up.
+                volumeSnapshotClassName:
+                  type: string
+                  description: Overrides the automatic choice of the VolumeSnapshotClass.
+                exportTo:
+                  type: array
+                  description: Storage locations (LocationProfile names) the backup is copied to.
+                  items:
+                    type: string
+                exportRetries:
+                  type: array
+                  description: Failed copies a person asked to repeat. The controller resets them.
+                  items:
+                    type: object
+                    required: ["location", "requestedAt"]
+                    properties:
+                      location:
+                        type: string
+                      requestedAt:
+                        type: string
+                        format: date-time
+                policy:
+                  type: object
+                  required: ["id", "name"]
+                  description: The policy that started this snapshot. Unset for manual snapshots.
+                  properties:
+                    id:
+                      type: string
+                    name:
+                      type: string
+            status:
+              type: object
+              properties:
+                phase:
+                  type: string
+                  enum: ["Pending", "Running", "Succeeded", "Failed"]
+                message:
+                  type: string
+                errorCode:
+                  type: string
+                hint:
+                  type: string
+                startedAt:
+                  type: string
+                  format: date-time
+                finishedAt:
+                  type: string
+                  format: date-time
+                steps:
+                  type: array
+                  items:
+                    type: object
+                    required: ["id", "phase"]
+                    properties:
+                      id:
+                        type: string
+                      phase:
+                        type: string
+                volumes:
+                  type: array
+                  items:
+                    type: object
+                    required: ["claim", "volumeSnapshot", "className", "ready"]
+                    properties:
+                      claim:
+                        type: string
+                      volumeSnapshot:
+                        type: string
+                      className:
+                        type: string
+                      ready:
+                        type: boolean
+                      sizeBytes:
+                        type: integer
+                        format: int64
+                      error:
+                        type: string
+                resources:
+                  type: object
+                  properties:
+                    count:
+                      type: integer
+                    bytes:
+                      type: integer
+                      format: int64
+                exports:
+                  type: array
+                  items:
+                    type: object
+                    required: ["location", "phase"]
+                    properties:
+                      location:
+                        type: string
+                      locationName:
+                        type: string
+                      phase:
+                        type: string
+                      errorCode:
+                        type: string
+                      message:
+                        type: string
+                      hint:
+                        type: string
+                      startedAt:
+                        type: string
+                        format: date-time
+                      finishedAt:
+                        type: string
+                        format: date-time
+                      resourcesSnapshot:
+                        type: string
+                      addedBytes:
+                        type: integer
+                        format: int64
+                      volumes:
+                        type: array
+                        items:
+                          type: object
+                          required: ["claim", "phase"]
+                          properties:
+                            claim:
+                              type: string
+                            phase:
+                              type: string
+                            pod:
+                              type: string
+                            startedAt:
+                              type: string
+                              format: date-time
+                            kopiaSnapshot:
+                              type: string
+                            sizeBytes:
+                              type: integer
+                              format: int64
+                            fileCount:
+                              type: integer
+                              format: int64
+                            addedBytes:
+                              type: integer
+                              format: int64
+                            error:
+                              type: string
+                conditions:
+                  type: array
+                  items:
+                    type: object
+                    required: ["type", "status", "reason", "lastTransitionTime"]
+                    properties:
+                      type:
+                        type: string
+                      status:
+                        type: string
+                      reason:
+                        type: string
+                      message:
+                        type: string
+                      observedGeneration:
+                        type: integer
+                        format: int64
+                      lastTransitionTime:
+                        type: string
+                        format: date-time

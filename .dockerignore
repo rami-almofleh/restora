@@ -1,0 +1,9 @@
+.git
+.DS_Store
+**/node_modules
+ui/dist
+bin
+charts
+docs
+hack
+*.md

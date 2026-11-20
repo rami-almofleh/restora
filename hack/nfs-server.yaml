@@ -1,0 +1,57 @@
+# NFS-Testserver für Restora. Nur für den lokalen Entwicklungs-Cluster "restora-dev".
+# Der Kubelet des Knotens bindet die Freigabe ein, deshalb braucht man die IP des Dienstes (kein Cluster-DNS):
+#
+#   kubectl --context restora-dev -n nfs get service nfs -o jsonpath='{.spec.clusterIP}'
+#
+#   Server: <IP des Dienstes>
+#   Pfad:   /
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: nfs
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nfs
+  namespace: nfs
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nfs
+  template:
+    metadata:
+      labels:
+        app: nfs
+    spec:
+      containers:
+        - name: nfs
+          image: itsthenetwork/nfs-server-alpine:12
+          env:
+            - name: SHARED_DIRECTORY
+              value: /exports
+          securityContext:
+            privileged: true
+          ports:
+            - name: nfs
+              containerPort: 2049
+          volumeMounts:
+            - name: data
+              mountPath: /exports
+      volumes:
+        - name: data
+          emptyDir: {}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: nfs
+  namespace: nfs
+spec:
+  selector:
+    app: nfs
+  ports:
+    - name: nfs
+      port: 2049
+      targetPort: nfs

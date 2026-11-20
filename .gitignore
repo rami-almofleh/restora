@@ -1,0 +1,7 @@
+.DS_Store
+node_modules/
+bin/
+*.log
+.env
+ui/dist/*
+!ui/dist/.gitkeep

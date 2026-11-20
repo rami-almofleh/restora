@@ -1,0 +1,75 @@
+# The API may read the cluster (names and counts only), request snapshots and restores and manage policies. It cannot read Secret contents.
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: restora-api-discovery
+  labels:
+    {{- include "restora.labels" . | nindent 4 }}
+rules:
+  - apiGroups: [""]
+    resources: ["namespaces", "persistentvolumeclaims"]
+    verbs: ["get", "list"]
+  # Config maps and secrets are read as metadata only: names, never content.
+  - apiGroups: [""]
+    resources: ["configmaps", "secrets"]
+    verbs: ["list"]
+  - apiGroups: ["apps"]
+    resources: ["deployments", "statefulsets"]
+    verbs: ["get", "list"]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: restora-api-discovery
+  labels:
+    {{- include "restora.labels" . | nindent 4 }}
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: restora-api-discovery
+subjects:
+  - kind: ServiceAccount
+    name: restora-api
+    namespace: {{ .Release.Namespace }}
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: restora-api-requests
+  namespace: {{ .Release.Namespace }}
+  labels:
+    {{- include "restora.labels" . | nindent 4 }}
+rules:
+  - apiGroups: ["restora.local"]
+    resources: ["snapshots"]
+    verbs: ["get", "list", "create", "update", "delete"]
+  - apiGroups: ["restora.local"]
+    resources: ["restorerequests"]
+    verbs: ["get", "list", "create"]
+  - apiGroups: ["restora.local"]
+    resources: ["exports"]
+    verbs: ["get", "list"]
+  - apiGroups: ["restora.local"]
+    resources: ["policies", "locationprofiles"]
+    verbs: ["get", "list", "create", "update", "delete"]
+  # Credentials of storage locations. The API writes them and never reads them back: there is no "get" here.
+  # Deleting a location deletes its secret through the owner reference.
+  - apiGroups: [""]
+    resources: ["secrets"]
+    verbs: ["create", "update"]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: restora-api-requests
+  namespace: {{ .Release.Namespace }}
+  labels:
+    {{- include "restora.labels" . | nindent 4 }}
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: restora-api-requests
+subjects:
+  - kind: ServiceAccount
+    name: restora-api
+    namespace: {{ .Release.Namespace }}

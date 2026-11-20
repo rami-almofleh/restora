@@ -1,0 +1,10 @@
+# Snapshot-Klasse des CSI-Treibers im lokalen Entwicklungs-Cluster "restora-dev" (minikube).
+# Nur zum Wiederanlegen nach dem Fehlertest aus PLAN.md, Phase 4.
+apiVersion: snapshot.storage.k8s.io/v1
+kind: VolumeSnapshotClass
+metadata:
+  name: csi-hostpath-snapclass
+  labels:
+    addonmanager.kubernetes.io/mode: EnsureExists
+driver: hostpath.csi.k8s.io
+deletionPolicy: Delete

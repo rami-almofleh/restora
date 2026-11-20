@@ -1,0 +1,88 @@
+/* Design tokens. Flat solid colors only. See docs/DESIGN.md. */
+:root {
+  color-scheme: light;
+
+  --font-sans: "Inter", "IBM Plex Sans Arabic", system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  /* Spacing: 8 px grid */
+  --space-1: 8px;
+  --space-2: 16px;
+  --space-3: 24px;
+  --space-4: 32px;
+  --space-6: 48px;
+  --space-8: 64px;
+
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+
+  --sidebar-width: 248px;
+  --sidebar-width-collapsed: 80px;
+  --topbar-height: 64px;
+  --bottom-nav-height: 64px;
+  --content-max: 1280px;
+  --tap-size: 44px;
+
+  --duration: 160ms;
+
+  /* Light theme */
+  --bg: #fafafb;
+  --surface: #ffffff;
+  --surface-muted: #f3f4f6;
+  --border: #e5e7eb;
+  --text: #111827;
+  --text-muted: #5b6472;
+
+  --accent: #0f766e;
+  --accent-hover: #115e59;
+  --accent-soft: #e6f4f2;
+  --on-accent: #ffffff;
+
+  --success: #15803d;
+  --success-soft: #e8f5ec;
+  --warning: #b45309;
+  --warning-soft: #fef3e2;
+  --danger: #b91c1c;
+  --danger-soft: #fdecec;
+  --danger-hover: #991b1b;
+  --on-danger: #ffffff;
+  --info: #1d4ed8;
+  --info-soft: #e8eefd;
+
+  --scrim: rgba(17, 24, 39, 0.4);
+  --overlay-shadow: 0 8px 24px rgba(17, 24, 39, 0.12);
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+
+  --bg: #0e1116;
+  --surface: #151a21;
+  --surface-muted: #1c222b;
+  --border: #2a313c;
+  --text: #e8ebf0;
+  --text-muted: #9aa4b2;
+
+  --accent: #3cc4b3;
+  --accent-hover: #5fd4c6;
+  --accent-soft: #12302d;
+  --on-accent: #06201d;
+
+  --success: #4ade80;
+  --success-soft: #12291a;
+  --warning: #fbbf24;
+  --warning-soft: #2e2410;
+  --danger: #f87171;
+  --danger-soft: #301515;
+  --danger-hover: #fca5a5;
+  --on-danger: #2b0a0a;
+  --info: #7aa2ff;
+  --info-soft: #162241;
+
+  --scrim: rgba(0, 0, 0, 0.6);
+  --overlay-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+}
+
+:root:lang(ar) {
+  --font-sans: "IBM Plex Sans Arabic", "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+}

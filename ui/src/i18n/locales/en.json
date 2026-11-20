@@ -1,0 +1,1027 @@
+{
+  "nav": {
+    "overview": "Overview",
+    "applications": "Applications",
+    "applicationsShort": "Apps",
+    "activity": "Activity",
+    "policies": "Policies",
+    "locations": "Storage locations",
+    "settings": "Settings",
+    "more": "More",
+    "main": "Main navigation",
+    "closeMenu": "Close menu"
+  },
+  "common": {
+    "loading": "Loading …",
+    "retry": "Try again",
+    "language": "Language",
+    "technicalDetails": "Technical details",
+    "loadMore": "Load more",
+    "phase": {
+      "Pending": "Waiting",
+      "Running": "Running",
+      "Succeeded": "Done",
+      "Failed": "Failed"
+    },
+    "duration": "Took {{duration}}",
+    "close": "Close"
+  },
+  "theme": {
+    "light": "Light",
+    "dark": "Dark",
+    "system": "System",
+    "switchToDark": "Switch to dark appearance",
+    "switchToLight": "Switch to light appearance"
+  },
+  "overview": {
+    "title": "Overview",
+    "subtitle": "The state of your data protection at a glance.",
+    "system": {
+      "title": "System",
+      "running": "Restora is running",
+      "unreachable": "Unreachable",
+      "version": "Version",
+      "startedAt": "Started on",
+      "errorTitle": "Connection failed",
+      "errorText": "The interface cannot reach the Restora service.",
+      "errorHint": "Check that the restora-api service is running, then try again."
+    },
+    "protection": {
+      "title": "Protection",
+      "emptyTitle": "Nothing to show yet",
+      "emptyText": "Once Restora discovers applications in your cluster, you will see here which ones are protected."
+    }
+  },
+  "placeholder": {
+    "title": "Coming soon",
+    "text": "This feature will be available in a later version.",
+    "back": "Back to overview"
+  },
+  "notFound": {
+    "title": "Page not found",
+    "text": "This address does not exist. The page may have moved.",
+    "back": "Back to overview"
+  },
+  "settings": {
+    "title": "Settings",
+    "subtitle": "Adjust language and appearance.",
+    "general": "General",
+    "language": {
+      "title": "Language",
+      "description": "Applies to the whole interface. Arabic is shown right to left."
+    },
+    "theme": {
+      "title": "Appearance",
+      "description": "“System” follows the setting of your device."
+    }
+  },
+  "applications": {
+    "title": "Applications",
+    "subtitle": "Everything Restora found in your cluster. One application is one namespace.",
+    "search": {
+      "label": "Search applications",
+      "placeholder": "Search by name or database",
+      "clear": "Clear search"
+    },
+    "filter": {
+      "label": "Filter by volumes",
+      "all": "All",
+      "with": "With volumes",
+      "without": "Without volumes"
+    },
+    "columns": {
+      "name": "Name",
+      "status": "Status",
+      "engines": "Database",
+      "workloads": "Workloads",
+      "volumes": "Volumes"
+    },
+    "count": "Found: {{total}}",
+    "health": {
+      "running": "Running",
+      "degraded": "Degraded",
+      "stopped": "Stopped"
+    },
+    "empty": {
+      "title": "No applications yet",
+      "text": "As soon as a namespace in your cluster runs pods or volumes, it shows up here. Restora hides system areas such as kube-system.",
+      "refresh": "Refresh now"
+    },
+    "noResults": {
+      "title": "Nothing matches your search",
+      "text": "Check the spelling or remove the filter.",
+      "reset": "Reset search"
+    },
+    "error": {
+      "title": "Applications could not be loaded",
+      "text": "Restora cannot read the cluster right now.",
+      "hint": "Check that restora-api is running and has read access to the cluster, then try again."
+    },
+    "detail": {
+      "back": "All applications",
+      "notFound": {
+        "title": "Application not found",
+        "text": "It may have been deleted. Go back to the list and refresh it."
+      },
+      "error": {
+        "title": "Application could not be loaded"
+      },
+      "overview": {
+        "title": "Overview",
+        "storage": "Total storage",
+        "createdAt": "Created on"
+      },
+      "workloads": {
+        "title": "Workloads",
+        "empty": "This application has no Deployments or StatefulSets.",
+        "name": "Name",
+        "kind": "Type",
+        "ready": "Ready",
+        "images": "Images",
+        "readyOf": "{{ready}} of {{desired}}"
+      },
+      "volumes": {
+        "title": "Volumes",
+        "empty": "This application has no volumes. There is no data to back up here.",
+        "name": "Name",
+        "size": "Size",
+        "storageClass": "Storage class",
+        "status": "Status",
+        "phase": {
+          "Bound": "Bound",
+          "Pending": "Waiting",
+          "Lost": "Lost"
+        }
+      },
+      "configMaps": {
+        "title": "Configuration (ConfigMaps)",
+        "empty": "No ConfigMaps."
+      },
+      "secrets": {
+        "title": "Secrets",
+        "empty": "No Secrets.",
+        "note": "Restora shows names only. It never reads their contents."
+      }
+    },
+    "deleted": {
+      "title": "Deleted, but still in storage",
+      "text": "These applications no longer exist in the cluster, but their backups are still in a storage location.",
+      "open": "Open",
+      "summary": "{{n}} backups, the latest from {{time}}"
+    }
+  },
+  "activity": {
+    "title": "Activity",
+    "subtitle": "All backups and restores in your cluster, newest first.",
+    "search": {
+      "label": "Search activity",
+      "placeholder": "Search by application",
+      "clear": "Clear search"
+    },
+    "typeFilter": {
+      "label": "Filter by kind",
+      "all": "All",
+      "backup": "Backups",
+      "restore": "Restores"
+    },
+    "status": {
+      "label": "Filter by status",
+      "all": "All",
+      "active": "Running",
+      "succeeded": "Done",
+      "failed": "Failed",
+      "withCount": "{{label}} ({{n}})"
+    },
+    "count": "Found: {{total}}",
+    "list": {
+      "title": "History"
+    },
+    "runningFor": "Running for {{duration}}",
+    "type": {
+      "backup": "Backup",
+      "restore": "Restore"
+    },
+    "empty": {
+      "title": "Nothing has happened yet",
+      "text": "As soon as you back up or restore an application, it shows up here with its status, duration and steps.",
+      "action": "Go to applications"
+    },
+    "noResults": {
+      "title": "Nothing matches your selection",
+      "text": "Check the spelling or remove a filter.",
+      "reset": "Reset filters"
+    },
+    "error": {
+      "title": "Activity could not be loaded",
+      "text": "Restora cannot read the list right now.",
+      "hint": "Check that restora-api is running and may read in the cluster, then try again."
+    },
+    "byPolicy": "Policy: {{name}}"
+  },
+  "policies": {
+    "title": "Policies",
+    "subtitle": "Back up applications automatically on a schedule.",
+    "create": "Create policy",
+    "back": "Back to policies",
+    "actionFailed": "The action could not be carried out.",
+    "state": {
+      "active": "Active",
+      "paused": "Paused",
+      "error": "Error"
+    },
+    "card": {
+      "schedule": "Schedule",
+      "applications": "Applications",
+      "next": "Next run",
+      "last": "Last run",
+      "pausedNext": "Paused, no run planned",
+      "never": "Has not run yet",
+      "lastResult": "{{started}} started, {{skipped}} skipped",
+      "missing": "These applications do not exist (any more): {{names}}.",
+      "noMatch": "No application matches right now. The policy backs up as soon as one does.",
+      "skipped": "Skipped ({{n}})",
+      "pause": "Pause",
+      "resume": "Resume",
+      "edit": "Edit",
+      "delete": "Delete",
+      "retention": "Retention",
+      "cleanup": "Last cleanup {{time}}: {{n}} deleted",
+      "export": "Export",
+      "exportNone": "Only in the cluster",
+      "run": "Run now"
+    },
+    "schedule": {
+      "hourly": "Hourly, at minute {{minute}}",
+      "daily": "Daily at {{time}}",
+      "weekly": "Every {{weekday}} at {{time}}",
+      "custom": "Custom schedule: {{cron}}",
+      "inZone": "{{schedule}} ({{timezone}})"
+    },
+    "selector": {
+      "all": "All applications ({{n}})",
+      "labels": "Label {{labels}} ({{n}} matching)"
+    },
+    "skipped": {
+      "snapshot_in_progress": "A backup was already running.",
+      "restore_in_progress": "A restore was running.",
+      "application_missing": "The application does not exist.",
+      "request_failed": "The backup could not be started."
+    },
+    "errors": {
+      "invalid_schedule": {
+        "text": "The schedule of this policy is invalid, so it does not run.",
+        "hint": "Edit the policy and fix the schedule."
+      },
+      "invalid_selector": {
+        "text": "The selection of applications is invalid, so the policy does not run.",
+        "hint": "Edit the policy and fix the selection."
+      },
+      "unknown": {
+        "text": "This policy cannot run.",
+        "hint": "The technical details help to find the cause."
+      },
+      "invalid_retention": {
+        "text": "The retention of this policy is invalid, so it does not run.",
+        "hint": "Edit the policy and fix the retention."
+      }
+    },
+    "empty": {
+      "title": "No policy yet",
+      "text": "A policy backs up your applications automatically, for example every night. Create the first one and you no longer have to remember it."
+    },
+    "error": {
+      "title": "Policies could not be loaded",
+      "text": "Restora cannot read the list right now.",
+      "hint": "Check that restora-api is running and may read in the cluster, then try again."
+    },
+    "notFound": {
+      "title": "This policy does not exist",
+      "text": "It may have been deleted. Go back to the list."
+    },
+    "delete": {
+      "title": "Delete policy?",
+      "intro": "The policy {{name}} will be deleted.",
+      "stops": "No more automatic backups are made by this policy.",
+      "keeps": "Backups it has already created are kept.",
+      "cancel": "Cancel",
+      "confirm": "Delete now",
+      "failed": "The policy could not be deleted."
+    },
+    "form": {
+      "titleNew": "Create policy",
+      "titleEdit": "Edit policy",
+      "subtitle": "Choose what is backed up and when. Below you see right away what the next runs look like.",
+      "general": "Name",
+      "what": "What is backed up?",
+      "when": "When does it run?",
+      "cancel": "Cancel",
+      "create": "Create policy",
+      "save": "Save changes",
+      "saving": "Saving …",
+      "name": {
+        "label": "Name of the policy",
+        "placeholder": "Nightly backup"
+      },
+      "selector": {
+        "label": "Selection of applications",
+        "applications": "Specific",
+        "labels": "By label",
+        "all": "All",
+        "allHint": "All applications in your cluster are backed up, including ones that appear later."
+      },
+      "applications": {
+        "label": "Applications",
+        "error": "The applications could not be loaded.",
+        "none": "There is no application in the cluster yet."
+      },
+      "labels": {
+        "label": "Namespace label",
+        "hint": "Format: key=value. Separate several with a comma; all of them must match."
+      },
+      "schedule": {
+        "label": "Kind of schedule",
+        "hourly": "Hourly",
+        "daily": "Daily",
+        "weekly": "Weekly",
+        "custom": "Custom"
+      },
+      "minute": {
+        "label": "Minute of the hour",
+        "hint": "For example 30: backup at 10:30, 11:30, 12:30 …"
+      },
+      "weekday": {
+        "label": "Weekday"
+      },
+      "time": {
+        "label": "Time"
+      },
+      "cron": {
+        "label": "Cron expression",
+        "hint": "Five fields: minute hour day month weekday. For example * * * * * for every minute or */15 * * * * every 15 minutes."
+      },
+      "timezone": {
+        "label": "Time zone",
+        "hint": "The time applies in this time zone."
+      },
+      "problems": {
+        "summary": "Please check the marked fields.",
+        "name": "Give the policy a name.",
+        "applications": "Choose at least one application.",
+        "labels": "Write the label as key=value.",
+        "minute": "Enter a number from 0 to 59.",
+        "cron": "A cron expression has five fields separated by spaces.",
+        "retention": "Enter at least one number above 0 (whole numbers up to 1000).",
+        "export": "Choose at least one storage location so that the backups leave the cluster."
+      },
+      "saveErrors": {
+        "policy_name_taken": "Another policy already has this name.",
+        "invalid_name": "The name is invalid.",
+        "invalid_schedule": "The schedule is invalid.",
+        "invalid_selector": "The selection of applications is invalid.",
+        "cluster_unreachable": "Restora could not save the policy.",
+        "unknown": "The policy could not be saved.",
+        "invalid_retention": "The retention is invalid."
+      },
+      "keep": "Retention",
+      "retention": {
+        "label": "Which backups stay?",
+        "all": "Keep all",
+        "rules": "By rules",
+        "allHint": "Nothing is ever deleted. Backups pile up until you delete them yourself.",
+        "hint": "Each number keeps the newest backup of each of the last hours, days, weeks, months or years. “The last” keeps the newest backups, whenever they were made. A backup stays when any rule keeps it. Everything else is deleted. Empty fields count as 0."
+      },
+      "exportTitle": "Export",
+      "export": {
+        "label": "Storage locations",
+        "hint": "Choose where each backup is also copied to: encrypted, without duplicate data, and from the second copy on only what changed. With no choice the backup stays in the cluster.",
+        "none": "There is no storage location yet.",
+        "create": "Add a storage location",
+        "error": "The storage locations could not be loaded.",
+        "testFailed": "Test failed"
+      }
+    },
+    "preview": {
+      "title": "Preview",
+      "runs": "The next runs",
+      "applications": "Will be backed up",
+      "noApplications": "No application matches right now. The policy backs up as soon as one does.",
+      "incomplete": "Fill in the selection and the schedule and the next runs show up here.",
+      "errors": {
+        "invalid_schedule": "This schedule is invalid. Check the cron expression.",
+        "invalid_selector": "The selection of applications is invalid.",
+        "unknown": "The preview could not be calculated.",
+        "invalid_retention": "The retention is invalid."
+      }
+    },
+    "retention": {
+      "keepAll": "All backups are kept",
+      "keeps": "Keeps {{parts}}",
+      "parts": {
+        "last": "the last {{n}}",
+        "hourly": "{{n}} hourly",
+        "daily": "{{n}} daily",
+        "weekly": "{{n}} weekly",
+        "monthly": "{{n}} monthly",
+        "yearly": "{{n}} yearly"
+      },
+      "labels": {
+        "last": "The last",
+        "hourly": "Hourly",
+        "daily": "Daily",
+        "weekly": "Weekly",
+        "monthly": "Monthly",
+        "yearly": "Yearly"
+      },
+      "reasons": {
+        "not_kept": "no rule keeps it",
+        "failed_expired": "failed and older than 7 days"
+      },
+      "previewTitle": "What happens when you save",
+      "deletesNothing": "Nothing would be deleted.",
+      "deletes": "{{n}} backups would be deleted, {{kept}} stay.",
+      "more": "… and {{n}} more",
+      "busy": "A backup is running for: {{names}}. Nothing is deleted there until it has finished.",
+      "previewFailed": "The preview could not be calculated.",
+      "checkFailed": "Restora could not check what would be deleted. Nothing was saved.",
+      "newHint": "The rules apply to the backups of this policy. Once it has made some, you see what would be deleted when you edit it, before you save.",
+      "confirm": {
+        "title": "Delete backups?",
+        "intro": "These rules delete {{n}} existing backups, {{kept}} stay.",
+        "permanent": "Deleting cannot be undone. It happens shortly after you save.",
+        "cancel": "Cancel",
+        "confirm": "Save and delete {{n}}"
+      }
+    },
+    "run": {
+      "started": "The policy is running: {{n}} backup(s) started.",
+      "toActivity": "Go to activity"
+    }
+  },
+  "locations": {
+    "title": "Storage locations",
+    "subtitle": "This is where your backups will be kept outside the cluster later. Add a location and test the connection.",
+    "create": "Add storage location",
+    "back": "Back to storage locations",
+    "actionFailed": "The action could not be carried out.",
+    "type": {
+      "s3": "S3-compatible",
+      "nfs": "NFS"
+    },
+    "test": {
+      "pending": "Testing …",
+      "succeeded": "Connected",
+      "failed": "Test failed",
+      "pendingHint": "Restora is testing the connection. This usually takes a few seconds.",
+      "at": "Tested on {{time}}"
+    },
+    "checks": {
+      "connect": "Connect",
+      "mount": "Mount the share",
+      "write": "Write a test file",
+      "read": "Read the test file",
+      "delete": "Delete the test file"
+    },
+    "errors": {
+      "credentials_missing": {
+        "text": "The credentials for this location are missing.",
+        "hint": "Edit the location and enter the access key and the secret key again."
+      },
+      "invalid_credentials": {
+        "text": "The storage rejected the access key or the secret key.",
+        "hint": "Check both values for typos and whether the key is still valid. You can enter them again under Edit."
+      },
+      "access_denied": {
+        "text": "The credentials are valid, but they may not do everything Restora needs in this bucket.",
+        "hint": "The key must be allowed to list, write, read and delete in the bucket."
+      },
+      "bucket_not_found": {
+        "text": "This storage has no such bucket.",
+        "hint": "Check the name of the bucket or create it with your provider."
+      },
+      "endpoint_unreachable": {
+        "text": "Restora cannot reach the storage at this address.",
+        "hint": "Check the address and the port, whether http or https is right and whether the cluster may reach the storage (firewall, DNS)."
+      },
+      "tls_error": {
+        "text": "The certificate of the storage is not trusted.",
+        "hint": "Use a certificate from a known authority. For tests only you can switch off the check of the certificate."
+      },
+      "timeout": {
+        "text": "The storage did not answer in time.",
+        "hint": "Check that the storage is reachable and not overloaded, then test again."
+      },
+      "nfs_mount_failed": {
+        "text": "The NFS share cannot be mounted.",
+        "hint": "Check the server and the path, whether the NFS server allows the nodes of the cluster and whether the nodes have an NFS client."
+      },
+      "nfs_not_writable": {
+        "text": "The share is mounted, but Restora may not write there.",
+        "hint": "Allow the user with the number 65532 to write in the exported directory."
+      },
+      "test_failed": {
+        "text": "The test failed.",
+        "hint": "The technical details below help to find the cause."
+      },
+      "unknown": {
+        "text": "The test failed.",
+        "hint": "The technical details below help to find the cause."
+      },
+      "protocol_mismatch": {
+        "text": "The address does not match the protocol of the storage.",
+        "hint": "Switch the address between http:// and https://. Self-hosted storage inside the cluster often uses http://."
+      }
+    },
+    "card": {
+      "type": "Kind",
+      "endpoint": "Address",
+      "bucket": "Bucket",
+      "credentials": "Credentials",
+      "credentialsSet": "Stored (not visible)",
+      "credentialsMissing": "Missing",
+      "server": "Server",
+      "path": "Path",
+      "test": "Test connection",
+      "edit": "Edit",
+      "delete": "Delete",
+      "exports": "Stored",
+      "exportCount": "{{n}} backups"
+    },
+    "empty": {
+      "title": "No storage location yet",
+      "text": "A storage location is a place outside the cluster where backups can be kept in addition later, for example an S3 bucket or an NFS share. Add one and check that the connection works."
+    },
+    "error": {
+      "title": "Storage locations could not be loaded",
+      "text": "Restora cannot read the list right now.",
+      "hint": "Check that restora-api is running and may read in the cluster, then try again."
+    },
+    "notFound": {
+      "title": "This storage location does not exist",
+      "text": "It may have been deleted. Go back to the list."
+    },
+    "delete": {
+      "title": "Delete storage location?",
+      "intro": "The storage location {{name}} will be deleted.",
+      "forgets": "Restora forgets the address and the stored credentials.",
+      "keeps": "Data that is already there is left alone.",
+      "cancel": "Cancel",
+      "confirm": "Delete now",
+      "failed": "The storage location could not be deleted.",
+      "exports": "{{n}} backups are kept there. They stay in the storage, but can no longer be restored from Restora.",
+      "errors": {
+        "location_in_use": "A policy still copies to this storage location. Take it out of the policy or delete the policy."
+      }
+    },
+    "form": {
+      "titleNew": "Add storage location",
+      "titleEdit": "Edit storage location",
+      "subtitle": "After saving, Restora tests the connection and shows you the result.",
+      "general": "General",
+      "storage": "Storage",
+      "credentials": "Credentials",
+      "share": "Share",
+      "type": "Kind of storage",
+      "cancel": "Cancel",
+      "create": "Add storage location",
+      "save": "Save changes",
+      "saving": "Saving …",
+      "testHint": "For the test Restora creates a small test file, reads it and deletes it again.",
+      "name": {
+        "label": "Name",
+        "placeholder": "For example: Company MinIO"
+      },
+      "endpoint": {
+        "label": "Address of the storage",
+        "hint": "With http:// or https://, for your own storage usually with a port. Without one, https is used."
+      },
+      "bucket": {
+        "label": "Bucket",
+        "hint": "The name of the bucket. It must exist already."
+      },
+      "prefix": {
+        "label": "Folder in the bucket (optional)",
+        "hint": "Restora keeps everything below this folder. Leave empty for the top level."
+      },
+      "region": {
+        "label": "Region (optional)",
+        "hint": "Needed for Amazon S3, usually empty for your own storage."
+      },
+      "pathStyle": {
+        "label": "Address the bucket in the path",
+        "hint": "Needed for MinIO and most self-hosted storage. Amazon S3 does not need it."
+      },
+      "skipTLS": {
+        "label": "Do not check the certificate",
+        "hint": "For tests with a self-signed certificate only.",
+        "warning": "Without the check, somebody can pose as your storage. Do not use this for real data."
+      },
+      "keys": {
+        "hint": "Restora stores the credentials as a Kubernetes secret. They are not visible anywhere afterwards.",
+        "keepHint": "The stored credentials are kept. Fill in both fields only if you want to replace them.",
+        "unchanged": "unchanged"
+      },
+      "accessKey": {
+        "label": "Access key"
+      },
+      "secretKey": {
+        "label": "Secret key"
+      },
+      "nfs": {
+        "hint": "The cluster mounts the share itself. The user with the number 65532 must be allowed to write there."
+      },
+      "server": {
+        "label": "NFS server"
+      },
+      "path": {
+        "label": "Path",
+        "hint": "The exported directory on the server, for example /exports/restora."
+      },
+      "problems": {
+        "summary": "Please check the marked fields.",
+        "name": "Give the storage location a name.",
+        "endpoint": "Enter the address of the storage.",
+        "bucket": "Enter a valid bucket name: 3 to 63 lowercase letters, digits, dots or hyphens.",
+        "accessKey": "Enter the access key.",
+        "secretKey": "Enter the secret key.",
+        "server": "Enter the NFS server.",
+        "path": "Enter the path with a slash at the start."
+      },
+      "saveErrors": {
+        "location_name_taken": "Another storage location already has this name.",
+        "invalid_location": "One of the entries is invalid.",
+        "cluster_unreachable": "Restora could not save the storage location.",
+        "unknown": "The storage location could not be saved."
+      }
+    }
+  },
+  "snapshots": {
+    "title": "Backups",
+    "running": "A backup is running. You can start the next one when it has finished.",
+    "backup": {
+      "button": "Back up now",
+      "starting": "Starting …",
+      "errors": {
+        "snapshot_in_progress": "A backup of this application is already running.",
+        "application_not_found": "This application no longer exists.",
+        "cluster_unreachable": "Restora could not start the backup.",
+        "unknown": "The backup could not be started.",
+        "restore_in_progress": "A restore of this application is running right now."
+      }
+    },
+    "steps": {
+      "exportResources": "Save resources",
+      "snapshotVolumes": "Back up volumes",
+      "exportToLocation": "Copy to storage locations"
+    },
+    "summary": "Volumes: {{volumes}} · Resources: {{resources}} · Size: {{size}}",
+    "empty": {
+      "title": "No backup yet",
+      "text": "Back up this application now so you can restore it later. All volumes and the application's settings are saved."
+    },
+    "error": {
+      "title": "Backups could not be loaded",
+      "text": "Restora cannot read the list right now. Try again."
+    },
+    "errors": {
+      "snapshot_class_missing": {
+        "text": "There is no snapshot class (VolumeSnapshotClass) for the storage driver of these volumes.",
+        "hint": "Create a VolumeSnapshotClass for the driver and start the backup again."
+      },
+      "volume_not_bound": {
+        "text": "A volume of this application is not assigned to storage yet.",
+        "hint": "Wait until the volume is bound (its pod has to run), then try again."
+      },
+      "volume_not_snapshottable": {
+        "text": "A volume does not use a CSI driver, so it cannot be backed up.",
+        "hint": "Only volumes of a CSI storage class support snapshots. Move the data to such a storage class."
+      },
+      "application_missing": {
+        "text": "The application was deleted before the backup started.",
+        "hint": "Pick an application that still exists."
+      },
+      "export_failed": {
+        "text": "The application's settings could not be saved.",
+        "hint": "Check that the Restora controller may read the resources and that its data volume has free space."
+      },
+      "snapshot_failed": {
+        "text": "The storage driver reported an error while backing up.",
+        "hint": "Look at the driver's logs and the events of the VolumeSnapshot, then start a new backup."
+      },
+      "timeout": {
+        "text": "The backup did not finish in time.",
+        "hint": "Check the storage driver and the snapshot controller of your cluster, then start a new backup."
+      },
+      "unknown": {
+        "text": "The backup failed.",
+        "hint": "The technical details below help to find the cause."
+      }
+    },
+    "delete": {
+      "button": "Delete",
+      "title": "Delete backup?",
+      "intro": "The backup of {{application}} from {{time}} will be deleted.",
+      "loses": "You will no longer be able to reset the application to this state.",
+      "permanent": "The volume snapshots and the saved settings are removed. This cannot be undone.",
+      "cancel": "Cancel",
+      "confirm": "Delete now",
+      "errors": {
+        "snapshot_running": "This backup is still running and cannot be deleted.",
+        "snapshot_in_use": "A restore is using this backup right now.",
+        "snapshot_not_found": "This backup does not exist any more.",
+        "cluster_unreachable": "Restora could not delete the backup.",
+        "unknown": "The backup could not be deleted."
+      }
+    }
+  },
+  "restores": {
+    "title": "Restores",
+    "button": "Restore",
+    "running": "A restore is running. Backups and further restores are paused until it has finished.",
+    "fromSnapshot": "From the backup of {{time}}",
+    "fromUnknownSnapshot": "From a backup that is no longer in the list",
+    "summary": "Resources: {{created}} new, {{updated}} updated",
+    "warnings": "Notes ({{skipped}})",
+    "error": {
+      "title": "Restores could not be loaded",
+      "text": "Restora cannot read the list right now. Try again."
+    },
+    "steps": {
+      "checkSnapshot": "Check backup",
+      "stopWorkloads": "Stop programs",
+      "restoreVolumes": "Recreate volumes",
+      "restoreResources": "Apply resources",
+      "waitReady": "Wait for start"
+    },
+    "dialog": {
+      "title": "Restore application?",
+      "intro": "The application {{application}} will be reset to the state of the backup of {{time}}.",
+      "volumes": "The volumes {{volumes}} will be deleted and created again from the backup. Everything written since this backup is lost.",
+      "noVolumes": "This backup has no volumes. Only the saved resources are applied.",
+      "resources": "{{resources}} saved resources will be applied. Resources with the same name in the application are overwritten.",
+      "downtime": "Programs that use these volumes are stopped and started again afterwards. The application is unavailable meanwhile.",
+      "cancel": "Cancel",
+      "confirm": "Restore now",
+      "starting": "Starting …",
+      "startFailed": "The restore could not be started."
+    },
+    "errors": {
+      "snapshot_not_found": {
+        "text": "This backup no longer exists.",
+        "hint": "Pick another backup."
+      },
+      "snapshot_not_ready": {
+        "text": "This backup is not complete and cannot be restored.",
+        "hint": "Pick a backup that finished successfully."
+      },
+      "restore_in_progress": {
+        "text": "A restore of this application is already running.",
+        "hint": "Wait until it has finished."
+      },
+      "snapshot_in_progress": {
+        "text": "A backup of this application is running right now.",
+        "hint": "Wait until it has finished, then restore."
+      },
+      "cluster_unreachable": {
+        "text": "Restora could not start the restore.",
+        "hint": "Check that restora-api may create restore requests and that the cluster is reachable."
+      },
+      "application_missing": {
+        "text": "The application's namespace no longer exists.",
+        "hint": "Create the namespace again, then restore. Restoring into a deleted namespace will follow later."
+      },
+      "volume_snapshot_missing": {
+        "text": "A snapshot of the volumes was deleted outside of Restora or is not usable.",
+        "hint": "This backup cannot be restored. Check the storage driver."
+      },
+      "export_missing": {
+        "text": "The saved settings of this backup can no longer be read.",
+        "hint": "The Restora data volume lost the files. This backup cannot be restored."
+      },
+      "volume_in_use": {
+        "text": "A pod uses a volume that must be replaced, but it does not belong to a Deployment or StatefulSet.",
+        "hint": "Stop or delete this pod yourself, then start the restore again. Nothing has been changed yet."
+      },
+      "timeout": {
+        "text": "The restore did not finish in time.",
+        "hint": "Check that the application's pods stop and that the storage driver can create volumes from snapshots. Then start a new restore. The backup is unchanged."
+      },
+      "workloads_not_ready": {
+        "text": "The data is restored, but the application did not start in time.",
+        "hint": "Look at the application's pods and events. The backup itself is unchanged."
+      },
+      "unknown": {
+        "text": "The restore failed.",
+        "hint": "The technical details below help to find the cause. The backup is unchanged, so you can try again."
+      },
+      "export_not_found": {
+        "text": "This stored backup does not exist any more.",
+        "hint": "Choose another one."
+      },
+      "repository_key_missing": {
+        "text": "The key of the storage location is not in this cluster. Without it the backups there cannot be read.",
+        "hint": "Restore the secret restora-repo-… from a copy of the key. Nothing has been changed yet."
+      },
+      "repository_password_invalid": {
+        "text": "The key of this cluster does not fit the storage location.",
+        "hint": "Restore the right key in the secret restora-repo-…. Nothing has been changed yet."
+      },
+      "location_missing": {
+        "text": "The storage location of this backup does not exist any more.",
+        "hint": "Add the storage location again. Nothing has been changed yet."
+      },
+      "credentials_missing": {
+        "text": "The credentials of the storage location are missing.",
+        "hint": "Edit the storage location and enter the credentials again."
+      },
+      "bundle_missing": {
+        "text": "The saved settings of the application cannot be read in the storage location.",
+        "hint": "This backup is incomplete. Choose another one."
+      },
+      "mover_not_started": {
+        "text": "The pod that brings the data back does not start.",
+        "hint": "Check that the cluster may start pods in the namespace of the application and that the image of Restora can be pulled."
+      },
+      "access_denied": {
+        "text": "The storage refused to read.",
+        "hint": "Test the storage location and check the rights of the key."
+      },
+      "bucket_not_found": {
+        "text": "The bucket does not exist any more.",
+        "hint": "Test the storage location and check the name of the bucket."
+      },
+      "endpoint_unreachable": {
+        "text": "The storage cannot be reached from the nodes of the cluster.",
+        "hint": "Test the storage location and check the address, the network and the firewall."
+      },
+      "nfs_not_writable": {
+        "text": "The NFS share does not allow access for the restore.",
+        "hint": "The restore runs as root. The share must not squash root (no_root_squash)."
+      },
+      "snapshot_not_in_repository": {
+        "text": "This backup is not (any more) in the storage location.",
+        "hint": "Choose another backup."
+      },
+      "export_unavailable": {
+        "text": "This version of Restora cannot restore from storage locations.",
+        "hint": "Update the Restora controller."
+      },
+      "export_failed": {
+        "text": "Bringing the data back from the storage location failed.",
+        "hint": "The technical details below help to find the cause. The stored backup is unchanged, you can try again."
+      }
+    },
+    "fromExport": "From the storage location {{location}}, as of {{time}}",
+    "exportDialog": {
+      "intro": "The application {{application}} will be brought back to the state of {{time}} from the storage location {{location}}.",
+      "missing": "The namespace {{application}} does not exist any more. Restora creates it again.",
+      "volumesNew": "The volumes {{volumes}} are created again and filled from the storage location.",
+      "duration": "Bringing back {{size}} over the network can take a few minutes."
+    }
+  },
+  "exports": {
+    "title": "Copies in storage locations",
+    "summary": "Volumes: {{size}} · new in storage: {{added}}",
+    "progress": "Volumes copied: {{done}} of {{total}}",
+    "progressResources": "Saving the resources …",
+    "errors": {
+      "repository_password_invalid": {
+        "text": "The storage location is encrypted with another key than this cluster knows.",
+        "hint": "There already is an archive of another Restora. Use an empty folder in the bucket (folder in the bucket) or restore the key of that archive in the secret restora-repo-…."
+      },
+      "access_denied": {
+        "text": "The storage refused to write.",
+        "hint": "Test the storage location and check the rights of the key: it must be allowed to write, read and delete."
+      },
+      "bucket_not_found": {
+        "text": "The bucket does not exist any more.",
+        "hint": "Test the storage location and check the name of the bucket."
+      },
+      "endpoint_unreachable": {
+        "text": "The storage cannot be reached from the nodes of the cluster.",
+        "hint": "Test the storage location and check the address, the network and the firewall. The copy runs in a pod next to the application."
+      },
+      "nfs_not_writable": {
+        "text": "The NFS share does not let the copy write.",
+        "hint": "The copy runs as root. The share must not squash root (no_root_squash)."
+      },
+      "location_missing": {
+        "text": "The storage location does not exist any more.",
+        "hint": "Choose another storage location in the policy."
+      },
+      "credentials_missing": {
+        "text": "The credentials of the storage location are missing.",
+        "hint": "Edit the storage location and enter the access key and the secret key again."
+      },
+      "bundle_missing": {
+        "text": "The saved settings of this backup can no longer be read.",
+        "hint": "The data volume of Restora has lost the file. This backup cannot be copied, take a new one."
+      },
+      "bundle_too_large": {
+        "text": "The settings of the application are too large for the copy.",
+        "hint": "Reduce the number of ConfigMaps, Secrets and other resources of the application."
+      },
+      "mover_not_started": {
+        "text": "The pod that copies the data does not start.",
+        "hint": "Check that the cluster may start pods in the namespace of the application (for example pod security rules) and that the image of Restora can be pulled."
+      },
+      "export_unavailable": {
+        "text": "This version of Restora cannot copy to storage locations.",
+        "hint": "Update the Restora controller."
+      },
+      "export_failed": {
+        "text": "The copy to the storage location failed.",
+        "hint": "The technical details below help to find the cause. The local backup is fine."
+      },
+      "unknown": {
+        "text": "The copy to the storage location failed.",
+        "hint": "The technical details below help to find the cause. The local backup is fine."
+      }
+    },
+    "card": {
+      "title": "Backups in storage locations",
+      "intro": "These copies are kept outside the cluster. You can restore the application from them, even when the local backup or the whole namespace is gone.",
+      "summary": "Volumes: {{volumes}} · Resources: {{resources}} · Size: {{size}}",
+      "restore": "Restore from storage location",
+      "error": {
+        "title": "Stored backups could not be loaded",
+        "text": "Restora cannot read the list right now. Try again."
+      }
+    },
+    "deleted": {
+      "badge": "Deleted",
+      "text": "This application does not exist in the cluster any more. Its backups are still in storage locations. You can restore it from there: Restora creates the namespace again and brings back volumes and settings."
+    }
+  },
+  "setup": {
+    "title": "Setup",
+    "subtitle": "Four steps from a fresh installation to a backup that is proven to come back.",
+    "later": "Continue later",
+    "error": {
+      "title": "The state of the setup could not be read",
+      "text": "Restora cannot query the cluster right now. Try again."
+    },
+    "steps": {
+      "label": "Steps of the setup",
+      "location": "Storage location",
+      "policy": "Policy",
+      "run": "Trial run",
+      "restore": "Restore test",
+      "done": "done",
+      "current": "current step",
+      "todo": "still to do",
+      "position": "Step {{n}} of {{total}}: {{name}}",
+      "allDone": "All steps are done."
+    },
+    "location": {
+      "title": "Where should the backups go?",
+      "intro": "Backups inside the cluster are lost with the cluster. Add a storage location outside, for example an S3 bucket or an NFS share. After saving, Restora tests the connection and moves on by itself as soon as it works.",
+      "change": "Change settings",
+      "another": "Add another storage location"
+    },
+    "policy": {
+      "title": "When and what is backed up?",
+      "intro": "A policy backs up on a schedule and copies each backup to the storage location. The suggestions fit for a start: all applications, every night at 2 am. You can change everything later, including the retention.",
+      "defaultName": "Daily backup"
+    },
+    "run": {
+      "title": "Trial run: back up once now",
+      "intro": "Restora now backs up {{applications}} and copies the backup to the storage location. Depending on the size this takes one to a few minutes. You see here how it goes.",
+      "start": "Start trial run",
+      "running": "Running …",
+      "again": "Try again",
+      "noApplications": "No application matches the policy right now. Start an application or change the selection of the policy.",
+      "startFailed": "The trial run could not be started.",
+      "skipped": "Skipped: {{names}}",
+      "result": "Result"
+    },
+    "restore": {
+      "title": "Check that the restore works",
+      "intro": "A backup that was never restored is only a hope. Restora now brings {{application}} back from the storage location and so checks the whole way: location, key and data.",
+      "warning": "Careful: this replaces the volumes of {{application}} with the trial backup. Everything written since the trial run is lost. The application is briefly unavailable. If you do not want that, skip this step.",
+      "backup": "Backup that is brought back",
+      "start": "Test the restore",
+      "again": "Try again",
+      "running": "Running …",
+      "skip": "Skip",
+      "result": "Result"
+    },
+    "done": {
+      "title": "All set",
+      "text": "The backup runs on a schedule, lands encrypted in the storage location and is proven to be restorable. Restora does the rest.",
+      "policies": "Go to policies",
+      "activity": "Go to activity"
+    },
+    "banner": {
+      "title": "Set up Restora",
+      "text": "Step {{n}} of {{total}}: {{name}}. The setup takes a few minutes.",
+      "start": "Start setup",
+      "continue": "Continue setup",
+      "dismiss": "Do not show again"
+    },
+    "settings": {
+      "title": "Setup assistant",
+      "text": "Takes you in four steps from the installation to the first backup that is proven to come back.",
+      "open": "Open assistant"
+    }
+  }
+}

@@ -1,0 +1,65 @@
+# Testanwendung für Restora: Postgres mit Volume auf der CSI-Storage-Klasse.
+# Nur für den lokalen Entwicklungs-Cluster "restora-dev".
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: demo
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: demo-db
+  namespace: demo
+type: Opaque
+stringData:
+  POSTGRES_PASSWORD: demo-only-not-secret
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: demo-db-data
+  namespace: demo
+spec:
+  accessModes: [ReadWriteOnce]
+  storageClassName: csi-hostpath-sc
+  resources:
+    requests:
+      storage: 1Gi
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: demo-db
+  namespace: demo
+  labels:
+    app: demo-db
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app: demo-db
+  template:
+    metadata:
+      labels:
+        app: demo-db
+    spec:
+      containers:
+        - name: postgres
+          image: postgres:16-alpine
+          envFrom:
+            - secretRef:
+                name: demo-db
+          env:
+            - name: PGDATA
+              value: /var/lib/postgresql/data/pgdata
+          ports:
+            - containerPort: 5432
+          volumeMounts:
+            - name: data
+              mountPath: /var/lib/postgresql/data
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: demo-db-data

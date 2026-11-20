@@ -1,0 +1,133 @@
+# The controller backs up and restores applications, so it must read and write their resources including Secrets.
+# That is why it is a separate account from the API.
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: restora-controller
+  labels:
+    {{- include "restora.labels" . | nindent 4 }}
+rules:
+  - apiGroups: [""]
+    resources: ["persistentvolumes"]
+    verbs: ["get"]
+  # Policies pick applications by namespace name and labels, so the controller lists namespaces. A restore from a
+  # storage location creates the namespace again when it was deleted.
+  - apiGroups: [""]
+    resources: ["namespaces"]
+    verbs: ["get", "list", "create"]
+  # Everything below is exported with each snapshot (see internal/snapshot/export.go) and written back by a restore
+  # (see internal/restore/apply.go). "list" serves the export, "get", "create" and "update" the restore.
+  - apiGroups: [""]
+    resources: ["configmaps", "secrets", "serviceaccounts", "services"]
+    verbs: ["list", "get", "create", "update"]
+  - apiGroups: ["apps"]
+    resources: ["deployments", "statefulsets", "daemonsets"]
+    verbs: ["list", "get", "create", "update"]
+  - apiGroups: ["batch"]
+    resources: ["cronjobs", "jobs"]
+    verbs: ["list", "get", "create", "update"]
+  - apiGroups: ["networking.k8s.io"]
+    resources: ["ingresses", "networkpolicies"]
+    verbs: ["list", "get", "create", "update"]
+  - apiGroups: ["autoscaling"]
+    resources: ["horizontalpodautoscalers"]
+    verbs: ["list", "get", "create", "update"]
+  - apiGroups: ["policy"]
+    resources: ["poddisruptionbudgets"]
+    verbs: ["list", "get", "create", "update"]
+  # Roles and bindings can only be written for permissions the controller holds itself. Restora does not ask for
+  # the right to hand out more, so a restore reports the ones it cannot write instead of failing.
+  - apiGroups: ["rbac.authorization.k8s.io"]
+    resources: ["roles", "rolebindings"]
+    verbs: ["list", "get", "create", "update"]
+  # Volume claims are replaced by a restore: the old one is deleted, a new one starts from the snapshot.
+  - apiGroups: [""]
+    resources: ["persistentvolumeclaims"]
+    verbs: ["list", "get", "create", "delete"]
+  # Pods show which workloads use a volume. Their replica sets lead to the owning Deployment.
+  # Copying a backup to a storage location (and bringing it back) runs a data mover pod next to the volume, in the
+  # namespace of the application, with a temporary copy of the secret that holds the keys of the location.
+  - apiGroups: [""]
+    resources: ["pods"]
+    verbs: ["list", "get", "create", "delete"]
+  - apiGroups: [""]
+    resources: ["secrets"]
+    verbs: ["delete"]
+  - apiGroups: ["apps"]
+    resources: ["replicasets"]
+    verbs: ["get"]
+  - apiGroups: ["snapshot.storage.k8s.io"]
+    resources: ["volumesnapshotclasses"]
+    verbs: ["get", "list"]
+  - apiGroups: ["snapshot.storage.k8s.io"]
+    resources: ["volumesnapshots"]
+    verbs: ["get", "list", "create", "delete"]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: restora-controller
+  labels:
+    {{- include "restora.labels" . | nindent 4 }}
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: restora-controller
+subjects:
+  - kind: ServiceAccount
+    name: restora-controller
+    namespace: {{ .Release.Namespace }}
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: restora-controller
+  namespace: {{ .Release.Namespace }}
+  labels:
+    {{- include "restora.labels" . | nindent 4 }}
+rules:
+  - apiGroups: ["restora.local"]
+    resources: ["snapshots", "restorerequests", "policies", "locationprofiles"]
+    verbs: ["get", "list", "watch", "update", "patch"]
+  # Scheduled runs create snapshots on behalf of a policy, retention deletes the ones that are no longer kept.
+  - apiGroups: ["restora.local"]
+    resources: ["snapshots"]
+    verbs: ["create", "delete"]
+  # Testing a storage location reads its credentials and, for NFS, starts a short-lived pod that mounts the share.
+  # The same pods run in the namespace of Restora to store the saved resources, and the key of each repository
+  # is a secret there.
+  - apiGroups: [""]
+    resources: ["secrets"]
+    verbs: ["get", "create", "delete"]
+  - apiGroups: [""]
+    resources: ["pods"]
+    verbs: ["get", "create", "delete"]
+  # A data mover hands the saved resources of a stored backup back through its log.
+  - apiGroups: [""]
+    resources: ["pods/log"]
+    verbs: ["get"]
+  - apiGroups: ["restora.local"]
+    resources: ["exports"]
+    verbs: ["get", "list", "create"]
+  - apiGroups: [""]
+    resources: ["events"]
+    verbs: ["list"]
+  - apiGroups: ["restora.local"]
+    resources: ["snapshots/status", "restorerequests/status", "policies/status", "locationprofiles/status"]
+    verbs: ["get", "update", "patch"]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: restora-controller
+  namespace: {{ .Release.Namespace }}
+  labels:
+    {{- include "restora.labels" . | nindent 4 }}
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: restora-controller
+subjects:
+  - kind: ServiceAccount
+    name: restora-controller
+    namespace: {{ .Release.Namespace }}

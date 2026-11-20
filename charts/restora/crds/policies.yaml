@@ -1,0 +1,162 @@
+# Helm installs files in crds/ once and never upgrades them. hack/dev-install.sh applies this file on every run.
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  name: policies.restora.local
+spec:
+  group: restora.local
+  scope: Namespaced
+  names:
+    kind: Policy
+    listKind: PolicyList
+    plural: policies
+    singular: policy
+  versions:
+    - name: v1alpha1
+      served: true
+      storage: true
+      subresources:
+        status: {}
+      additionalPrinterColumns:
+        - name: Title
+          type: string
+          jsonPath: .spec.name
+        - name: Schedule
+          type: string
+          jsonPath: .spec.schedule.type
+        - name: Paused
+          type: boolean
+          jsonPath: .spec.paused
+        - name: Next
+          type: date
+          jsonPath: .status.nextRunAt
+      schema:
+        openAPIV3Schema:
+          type: object
+          required: ["spec"]
+          properties:
+            spec:
+              type: object
+              required: ["name", "selector", "schedule"]
+              properties:
+                name:
+                  type: string
+                  minLength: 1
+                  maxLength: 256
+                  description: Title shown to people. The resource name is a generated id.
+                paused:
+                  type: boolean
+                exportTo:
+                  type: array
+                  maxItems: 5
+                  description: Storage locations (LocationProfile names) every backup of the policy is copied to.
+                  items:
+                    type: string
+                retention:
+                  type: object
+                  description: Which backups are kept. All zero keeps everything.
+                  properties:
+                    last:
+                      type: integer
+                      minimum: 0
+                      maximum: 1000
+                    hourly:
+                      type: integer
+                      minimum: 0
+                      maximum: 1000
+                    daily:
+                      type: integer
+                      minimum: 0
+                      maximum: 1000
+                    weekly:
+                      type: integer
+                      minimum: 0
+                      maximum: 1000
+                    monthly:
+                      type: integer
+                      minimum: 0
+                      maximum: 1000
+                    yearly:
+                      type: integer
+                      minimum: 0
+                      maximum: 1000
+                selector:
+                  type: object
+                  required: ["mode"]
+                  properties:
+                    mode:
+                      type: string
+                      enum: ["applications", "labels", "all"]
+                    applications:
+                      type: array
+                      maxItems: 200
+                      items:
+                        type: string
+                    matchLabels:
+                      type: object
+                      additionalProperties:
+                        type: string
+                schedule:
+                  type: object
+                  required: ["type"]
+                  properties:
+                    type:
+                      type: string
+                      enum: ["hourly", "daily", "weekly", "custom"]
+                    minute:
+                      type: integer
+                    hour:
+                      type: integer
+                    weekday:
+                      type: integer
+                    cron:
+                      type: string
+                      description: Five-field cron expression for the custom type.
+                    timezone:
+                      type: string
+                      description: IANA time zone, UTC when empty.
+            status:
+              type: object
+              properties:
+                observedGeneration:
+                  type: integer
+                  format: int64
+                nextRunAt:
+                  type: string
+                  format: date-time
+                errorCode:
+                  type: string
+                message:
+                  type: string
+                hint:
+                  type: string
+                lastCleanup:
+                  type: object
+                  required: ["at", "deleted"]
+                  properties:
+                    at:
+                      type: string
+                      format: date-time
+                    deleted:
+                      type: integer
+                lastRun:
+                  type: object
+                  required: ["at", "snapshots", "skipped"]
+                  properties:
+                    at:
+                      type: string
+                      format: date-time
+                    snapshots:
+                      type: array
+                      items:
+                        type: string
+                    skipped:
+                      type: array
+                      items:
+                        type: object
+                        required: ["application", "reason"]
+                        properties:
+                          application:
+                            type: string
+                          reason:
+                            type: string

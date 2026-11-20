@@ -1,0 +1,142 @@
+# Helm installs files in crds/ once and never upgrades them. hack/dev-install.sh applies this file on every run.
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  name: restorerequests.restora.local
+spec:
+  group: restora.local
+  scope: Namespaced
+  names:
+    kind: RestoreRequest
+    listKind: RestoreRequestList
+    plural: restorerequests
+    singular: restorerequest
+  versions:
+    - name: v1alpha1
+      served: true
+      storage: true
+      subresources:
+        status: {}
+      additionalPrinterColumns:
+        - name: Application
+          type: string
+          jsonPath: .spec.application
+        - name: Snapshot
+          type: string
+          jsonPath: .spec.snapshot
+        - name: Phase
+          type: string
+          jsonPath: .status.phase
+        - name: Age
+          type: date
+          jsonPath: .metadata.creationTimestamp
+      schema:
+        openAPIV3Schema:
+          type: object
+          required: ["spec"]
+          properties:
+            spec:
+              type: object
+              required: ["application"]
+              properties:
+                snapshot:
+                  type: string
+                  description: Name of the Snapshot to restore. Empty when the restore comes from a storage location.
+                export:
+                  type: string
+                  description: Name of the Export to restore from a storage location. The application may be gone.
+                exportLocationName:
+                  type: string
+                exportCreatedAt:
+                  type: string
+                  format: date-time
+                application:
+                  type: string
+                  minLength: 1
+                  description: Namespace to restore into, the one the snapshot was taken from.
+            status:
+              type: object
+              properties:
+                phase:
+                  type: string
+                  enum: ["Pending", "Running", "Succeeded", "Failed"]
+                message:
+                  type: string
+                errorCode:
+                  type: string
+                hint:
+                  type: string
+                startedAt:
+                  type: string
+                  format: date-time
+                finishedAt:
+                  type: string
+                  format: date-time
+                steps:
+                  type: array
+                  items:
+                    type: object
+                    required: ["id", "phase"]
+                    properties:
+                      id:
+                        type: string
+                      phase:
+                        type: string
+                stopped:
+                  type: array
+                  items:
+                    type: object
+                    required: ["kind", "name", "replicas"]
+                    properties:
+                      kind:
+                        type: string
+                      name:
+                        type: string
+                      replicas:
+                        type: integer
+                        format: int32
+                volumes:
+                  type: array
+                  items:
+                    type: object
+                    required: ["claim", "restored"]
+                    properties:
+                      claim:
+                        type: string
+                      volumeSnapshot:
+                        type: string
+                      restored:
+                        type: boolean
+                resources:
+                  type: object
+                  properties:
+                    created:
+                      type: integer
+                    updated:
+                      type: integer
+                    skipped:
+                      type: integer
+                warnings:
+                  type: array
+                  items:
+                    type: string
+                conditions:
+                  type: array
+                  items:
+                    type: object
+                    required: ["type", "status", "reason", "lastTransitionTime"]
+                    properties:
+                      type:
+                        type: string
+                      status:
+                        type: string
+                      reason:
+                        type: string
+                      message:
+                        type: string
+                      observedGeneration:
+                        type: integer
+                        format: int64
+                      lastTransitionTime:
+                        type: string
+                        format: date-time

@@ -1,0 +1,32 @@
+# Default values for Restora. Override with --set or -f.
+
+image:
+  # Leave empty to use local images (development). Example: registry.example.com/restora
+  repository: ""
+  tag: dev
+  pullPolicy: IfNotPresent
+
+controller:
+  imageName: restora-controller
+  persistence:
+    # Small volume for the exported resources of each snapshot. Empty uses the cluster's default storage class.
+    size: 1Gi
+    storageClass: ""
+  resources:
+    requests:
+      cpu: 50m
+      memory: 64Mi
+    limits:
+      memory: 256Mi
+
+api:
+  imageName: restora-api
+  service:
+    type: ClusterIP
+    port: 8080
+  resources:
+    requests:
+      cpu: 50m
+      memory: 64Mi
+    limits:
+      memory: 256Mi

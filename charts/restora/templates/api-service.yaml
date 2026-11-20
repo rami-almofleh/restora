@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: restora-api
+  namespace: {{ .Release.Namespace }}
+  labels:
+    {{- include "restora.labels" . | nindent 4 }}
+    app.kubernetes.io/component: api
+spec:
+  type: {{ .Values.api.service.type }}
+  selector:
+    {{- include "restora.selectorLabels" (dict "root" . "component" "api") | nindent 4 }}
+  ports:
+    - name: http
+      port: {{ .Values.api.service.port }}
+      targetPort: http

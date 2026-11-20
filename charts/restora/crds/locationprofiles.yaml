@@ -1,0 +1,114 @@
+# Helm installs files in crds/ once and never upgrades them. hack/dev-install.sh applies this file on every run.
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  name: locationprofiles.restora.local
+spec:
+  group: restora.local
+  scope: Namespaced
+  names:
+    kind: LocationProfile
+    listKind: LocationProfileList
+    plural: locationprofiles
+    singular: locationprofile
+  versions:
+    - name: v1alpha1
+      served: true
+      storage: true
+      subresources:
+        status: {}
+      additionalPrinterColumns:
+        - name: Title
+          type: string
+          jsonPath: .spec.name
+        - name: Type
+          type: string
+          jsonPath: .spec.type
+        - name: Tested
+          type: boolean
+          jsonPath: .status.lastTest.ok
+        - name: Age
+          type: date
+          jsonPath: .metadata.creationTimestamp
+      schema:
+        openAPIV3Schema:
+          type: object
+          required: ["spec"]
+          properties:
+            spec:
+              type: object
+              required: ["name", "type"]
+              properties:
+                name:
+                  type: string
+                  minLength: 1
+                  maxLength: 256
+                  description: Title shown to people. The resource name is a generated id.
+                type:
+                  type: string
+                  enum: ["s3", "nfs"]
+                testRequestedAt:
+                  type: string
+                  format: date-time
+                s3:
+                  type: object
+                  required: ["endpoint", "bucket", "credentialsSecret"]
+                  properties:
+                    endpoint:
+                      type: string
+                      description: scheme://host[:port]
+                    region:
+                      type: string
+                    bucket:
+                      type: string
+                    prefix:
+                      type: string
+                    pathStyle:
+                      type: boolean
+                    skipTLSVerify:
+                      type: boolean
+                    credentialsSecret:
+                      type: string
+                      description: Name of a secret in this namespace with the keys accessKey and secretKey.
+                nfs:
+                  type: object
+                  required: ["server", "path"]
+                  properties:
+                    server:
+                      type: string
+                    path:
+                      type: string
+            status:
+              type: object
+              properties:
+                lastTest:
+                  type: object
+                  required: ["at", "ok", "checks"]
+                  properties:
+                    requestedAt:
+                      type: string
+                      format: date-time
+                    at:
+                      type: string
+                      format: date-time
+                    ok:
+                      type: boolean
+                    durationMs:
+                      type: integer
+                      format: int64
+                    errorCode:
+                      type: string
+                    message:
+                      type: string
+                    hint:
+                      type: string
+                    checks:
+                      type: array
+                      items:
+                        type: object
+                        required: ["id", "phase"]
+                        properties:
+                          id:
+                            type: string
+                          phase:
+                            type: string

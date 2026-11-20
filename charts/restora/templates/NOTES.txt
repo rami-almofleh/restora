@@ -1,0 +1,7 @@
+Restora is installed in namespace {{ .Release.Namespace }}.
+
+Open the web interface on this machine:
+
+  kubectl --namespace {{ .Release.Namespace }} port-forward service/restora-api 8080:{{ .Values.api.service.port }}
+
+Then visit http://localhost:8080
